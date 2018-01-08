@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Imjut</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Menu -->
+    <string name="menu_notificaciones">Notificaciones</string>
+    <string name="menu_configuracion">Configuracion</string>
+    <string name="menu_contacto">Contacto</string>
+    <string name="menu_acerca_de">Acerca de</string>
+    <string name="menu_cerrar_sesion">Cerrar sesion</string>
+
+    <!-- Login -->
+    <string name="email">Correo Electronico</string>
+    <string name="pass">Contraseña</string>
+    <string name="ingresar">Iniciar Sesion</string>
+    <string name="crear_cuenta">¿No tienes una cuenta?, creala</string>
+    <string name="error_login">Correo o contraseña incorrectos</string>
+
+    <!-- Registrase -->
+    <string name="correo">Correo Electronico</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="confirmar">Confirmar Contraseña</string>
+    <string name="registrarse">Crear Cuenta</string>
+    <string name="contras_iguales">Las contraseñas no son iguales</string>
+    <string name="nombre">Nombre de usuario</string>
+    <string name="guardado">Guardado Correctamente en la Base de datos</string>
+    <string name="error_registro">Error al crear el usuario</string>
+
+    <!-- Programas -->
+    <string name="programas">Programas</string>
+
+    <!-- Eventos -->
+    <string name="eventos">Eventos</string>
+
+    <!-- Bolsa de Trabajo -->
+    <string name="bolsa"> Bolsa de trabajo</string>
+
+    <!-- Galeria -->
+    <string name="galeria"> Galeria</string>
+
+
+    <!-- Objetivos -->
+    <string name="objetivo">Descripcion: acercar a los jovenes a la ciencia, el arte y la
+        tecnologia por medio de conferencia de jovenes y personas destacadas del mismo estado.
+    </string>
+    <string name="titulo">E-CAT</string>
+
+    <!-- Asistir Programas -->
+    <string name="registrarse_asistir">Registrarse</string>
+    <string name="nombre_asistir">Nombre</string>
+    <string name="apellido">Apellidos</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="comunidad">Comunidad</string>
+    <string name="numero">Numero Telefonico</string>
+    <string name="facebook">Facebook</string>
+    <string name="atras"> &lt;&lt; Volver</string>
+
+
+</resources>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:id="@+id/cardViewProgramas"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="115dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:id="@+id/layout_titulo"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="115dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ecat">
+
+            <ImageView
+                android:id="@+id/imagenPrograma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ecat"/>
+
+            <!--
+            <TextView
+                android:padding="8dp"
+                android:id="@+id/tv_titulo"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Programa"/>
+            -->
+            <ImageView
+                android:id="@+id/info"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/info"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_asistir"
+            android:layout_width="100dp"
+            android:layout_height="115dp"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asistir" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:id="@+id/layout_objetivos"
+        android:visibility="invisible"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:id="@+id/Titulo_objetivos"
+            android:text="Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:id="@+id/objetivos"
+            android:text="Objetivos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

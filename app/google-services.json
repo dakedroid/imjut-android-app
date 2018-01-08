@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "817248360673",
+    "firebase_url": "https://imjut-ecdca.firebaseio.com",
+    "project_id": "imjut-ecdca",
+    "storage_bucket": "imjut-ecdca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817248360673:android:0d9110e751ea2ca1",
+        "android_client_info": {
+          "package_name": "com.example.angel.imjut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817248360673-l8q50r7hp4fp74i1lmudo45pleim7s76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEMsEn-XCaFL_bmTUfWiMdgdr-6hyMp2s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
