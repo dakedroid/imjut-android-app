@@ -3,7 +3,10 @@ package com.example.angel.imjut.HomeActivities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -169,19 +172,40 @@ public class EventosActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(final EventosActivity.ViewHolder viewHolder, final Evento model, int position) {
+                viewHolder.iv_evento.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mIntent = new Intent(EventosActivity.this, FotoDetallesActivity.class);
+                        mIntent.putExtra("postImageUrl", model.getPostImageUrl());
+                        EventosActivity.this.startActivity(mIntent);
+                    }
+                });
                 viewHolder.tituloEvento.setText(model.getTitulo());
                 viewHolder.tv_descripcion.setText(model.getDescripcion());
                 //viewHolder.titulo.setText(model.getTitulo());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //EventosActivity.this.startActivity(new Intent(EventosActivity.this, AsistirActivity.class));
+                        AlertDialog.Builder builder = new AlertDialog.Builder(EventosActivity.this);
+                        builder.setTitle("Aviso")
+                                .setMessage("Se le notificara una hora antes del evento")
+                                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // FIRE ZE MISSILES!
+                                    }
+                                })
+                                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // User cancelled the dialog
+                                    }
+                                });
+                        builder.show();
+
                     }
                 });
 
                 if(model.getPostImageUrl() != null){
                     StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
-
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
 
                     load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

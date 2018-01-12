@@ -43,6 +43,7 @@ dependencies {
     compile 'com.firebaseui:firebase-ui-auth:1.1.1'
     compile 'com.firebaseui:firebase-ui-storage:1.1.1'
     compile 'me.imid.swipebacklayout.lib:library:1.1.0'
+    compile 'it.sephiroth.android.library.imagezoom:imagezoom:2.2.5'
     compile 'com.android.support:multidex:1.0.2'
 }
 apply plugin: 'com.google.gms.google-services'

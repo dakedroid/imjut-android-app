@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.angel.imjut.Modelos.Evento;
+import com.example.angel.imjut.Modelos.Foto;
 import com.example.angel.imjut.Modelos.Programa;
 import com.example.angel.imjut.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -70,6 +71,9 @@ public class SubirContenidoPrueba extends AppCompatActivity {
                         case "eventos":
                             sendEvento();
                             break;
+                        case "galeria":
+                            sendFotoToGalery();
+                            break;
                         default:
                             Toast.makeText(SubirContenidoPrueba.this, "Clase no valida", Toast.LENGTH_SHORT).show();
                             break;
@@ -77,6 +81,28 @@ public class SubirContenidoPrueba extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void sendFotoToGalery(){
+        Foto foto = new Foto();
+        String folder = "galeria";
+        String descripcion = et_objetivo.getText().toString();
+        String postId = getUid();
+
+        foto.setDescripcion(descripcion);
+        foto.setPostId(postId);
+
+        String postImageUrl = "gs://imjut-ecdca.appspot.com/imagenes/" + folder + "/img" + foto.getPostId()+ ".jpg";
+        foto.setImageUrl(postImageUrl);
+
+        FirebaseDatabase.getInstance().getReference("posts").child("galeria").child(postId).setValue(foto, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                Toast.makeText(SubirContenidoPrueba.this, R.string.guardado, Toast.LENGTH_SHORT).show();
+            }
+        });
+        uploadFile(foto.getPostId(), folder);
+
     }
 
     private void sendEvento(){
@@ -186,7 +212,4 @@ public class SubirContenidoPrueba extends AppCompatActivity {
             Toast.makeText(this, "Error al subir el archivo", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
 }

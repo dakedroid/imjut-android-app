@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".Imjut"
@@ -64,7 +65,11 @@
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
         <activity android:name=".AsistirActivity" />
-        <activity android:name=".SubirContenido.SubirContenidoPrueba"></activity>
+        <activity android:name=".SubirContenido.SubirContenidoPrueba" />
+        <activity
+            android:name=".HomeActivities.FotoDetallesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
