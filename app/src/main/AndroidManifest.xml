@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.angel.imjut">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
-        android:name="android.support.multidex.MultiDexApplication"
+        android:name=".Imjut"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
         <activity
             android:name=".SplashScreen"
             android:noHistory="true"
@@ -57,7 +63,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
-        <activity android:name=".AsistirActivity"></activity>
+        <activity android:name=".AsistirActivity" />
+        <activity android:name=".SubirContenido.SubirContenidoPrueba"></activity>
     </application>
 
 </manifest>

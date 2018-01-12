@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.angel.imjut.SubirContenido.SubirContenidoPrueba">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/subir_imagen"
+        android:background="@drawable/layout_circle"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/clase"
+        android:hint="Clase"/>
+
+    <EditText
+        android:id="@+id/et_programa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titulo Programa"/>
+
+    <EditText
+        android:id="@+id/et_objetivos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="objetivos"/>
+
+    <Button
+        android:id="@+id/btn_subirPrograma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subir"/>
+
+</LinearLayout>

@@ -14,10 +14,10 @@
         app:forceAspectRatio="false"
         app:enabled="true"
         app:switchDesign="android"
-        app:switchBkgCheckedColor="@color/colorAccent"
-        app:switchBkgNotCheckedColor="@color/gris"
-        app:switchToggleCheckedColor="@color/colorAccent"
+        app:switchToggleCheckedColor="@color/toggleButtonChkd"
+        app:switchBkgCheckedColor="@color/toggleButtonChkdBg"
+        app:switchToggleNotCheckedColor="@color/toggleButtonNotChkd"
+        app:switchBkgNotCheckedColor="@color/toggleButtonNotChkdBg"
         app:switchToggleCheckedImage="@drawable/feliz_128"
-        app:switchToggleNotCheckedColor="@color/gris"
         app:switchToggleNotCheckedImage="@drawable/triste_128"/>
 </RelativeLayout>

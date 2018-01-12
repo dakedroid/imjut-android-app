@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment{
             tv_titulo = (TextView) itemView.findViewById(R.id.tv_titulo);
             layout = (LinearLayout) itemView.findViewById(R.id.cardView);
         }
+
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
@@ -95,50 +96,52 @@ public class HomeFragment extends Fragment{
 
         @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             //holder.avator.setImageDrawable(mPlaceAvators[position % mPlaceAvators.length]);
             holder.tv_titulo.setText(mPlaces[position % mPlaces.length]);
 
             switch (position){
                 case 0:
                     holder.layout.setBackgroundColor(resources.getColor(R.color.color));
+                    holder.layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mActivity, ProgramasActivity.class));
+                            mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                        }
+                    });
                     break;
                 case 1:
                     holder.layout.setBackgroundColor(resources.getColor(R.color.color2));
+                    holder.layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mActivity, EventosActivity.class));
+                            mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                        }
+                    });
                     break;
                 case 2:
                     holder.layout.setBackgroundColor(resources.getColor(R.color.color3));
+                    holder.layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mContext.startActivity(new Intent(mActivity, BolsaTrabajoActivity.class));
+                            mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                        }
+                    });
                     break;
                 case 3:
                     holder.layout.setBackgroundColor(resources.getColor(R.color.color4));
-                    break;
-            }
-
-            holder.layout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    switch (holder.getAdapterPosition()){
-                        case 0:
-                            mContext.startActivity(new Intent(mActivity, ProgramasActivity.class));
-                            mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                            break;
-                        case 1:
-                            mContext.startActivity(new Intent(mActivity, EventosActivity.class));
-                            mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                            break;
-                        case 2:
-                            mContext.startActivity(new Intent(mActivity, BolsaTrabajoActivity.class));
-                            mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                            break;
-                        case 3:
+                    holder.layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
                             mContext.startActivity(new Intent(mActivity, GaleriaActivity.class));
                             mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            });
+                        }
+                    });
+                    break;
+            }
         }
         @Override
         public int getItemCount() {return LENGTH;}

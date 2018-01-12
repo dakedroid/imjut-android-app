@@ -11,7 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.angel.imjut.SubirContenido.SubirContenidoPrueba;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -100,6 +103,9 @@ public class HomeActivity extends AppCompatActivity {
     public boolean handleNavigationItemSelected(MenuItem item){
 
         switch (item.getItemId()){
+            case R.id.navigation_item_1:
+                startActivity(new Intent(this, SubirContenidoPrueba.class));
+                return true;
             case R.id.navigation_item_5:
                 mAuth.signOut();
                 Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);

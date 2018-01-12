@@ -14,4 +14,8 @@
     <color name="rojo">#e01313</color>
     <color name="gris">#cfc4c4</color>
     <color name="verde">#3ce513</color>
+    <color name="toggleButtonChkd">#EC407A</color>
+    <color name="toggleButtonChkdBg">#F06292</color>
+    <color name="toggleButtonNotChkd">#757575</color>
+    <color name="toggleButtonNotChkdBg">#9E9E9E</color>
 </resources>

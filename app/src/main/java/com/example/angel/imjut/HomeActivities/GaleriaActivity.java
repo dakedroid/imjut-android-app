@@ -25,4 +25,10 @@ public class GaleriaActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,R.anim.right_out);
+    }
 }

@@ -5,6 +5,7 @@ package com.example.angel.imjut.Modelos;
  */
 
 public class Programa {
+    private String postImageUrl;
     private String titulo;
     private String objetivos;
     private String uid;
@@ -12,10 +13,20 @@ public class Programa {
     public Programa(){
 
     }
-    public Programa(String titulo, String objetivos, String uid) {
+
+    public Programa(String postImageUrl, String titulo, String objetivos, String uid) {
+        this.postImageUrl = postImageUrl;
         this.titulo = titulo;
         this.objetivos = objetivos;
         this.uid = uid;
+    }
+
+    public String getPostImageUrl() {
+        return postImageUrl;
+    }
+
+    public void setPostImageUrl(String postImageUrl) {
+        this.postImageUrl = postImageUrl;
     }
 
     public String getTitulo() {

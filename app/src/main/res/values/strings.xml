@@ -50,6 +50,7 @@
     <!-- Asistir Programas -->
     <string name="registrarse_asistir">Registrarse</string>
     <string name="nombre_asistir">Nombre</string>
+    <string name="edad">Edad</string>
     <string name="apellido">Apellidos</string>
     <string name="ciudad">Ciudad</string>
     <string name="comunidad">Comunidad</string>
