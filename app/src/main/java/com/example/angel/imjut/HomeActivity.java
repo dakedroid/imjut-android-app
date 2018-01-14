@@ -12,9 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.angel.imjut.SubirContenido.SubirContenidoPrueba;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity {
 

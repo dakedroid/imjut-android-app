@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,12 +20,17 @@ import com.example.angel.imjut.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GaleriaActivity extends AppCompatActivity {
@@ -44,21 +50,11 @@ public class GaleriaActivity extends AppCompatActivity {
         GaleriaActivity.context = getApplicationContext();
         getSupportActionBar().setTitle("Galería");
 
-        GridLayoutManager mGridLayout = new GridLayoutManager(this, 2);
 
-        mGridLayout.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                if(position % 3 == 0){
-                    return 2;
-                }else{
-                    return 1;
-                }
-            }
-        });
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(this, 3);
 
         mGaleriaRV = findViewById(R.id.galeriaRV);
-        mGaleriaRV.setLayoutManager(mGridLayout);
+        mGaleriaRV.setLayoutManager(mGridLayoutManager);
         setupAdapter();
     }
 
@@ -84,14 +80,36 @@ public class GaleriaActivity extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference("posts").child("galeria")
         ) {
             @Override
-            protected void populateViewHolder(final ViewHolder viewHolder, final Foto model, int position) {
+            protected void populateViewHolder(final ViewHolder viewHolder, final Foto model,final int position) {
                 //viewHolder.contenedorFoto.getLayoutParams().height = getRandomIntInRange(230,130);
                 viewHolder.contenedorFoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mIntent = new Intent(GaleriaActivity.this, FotoDetallesActivity.class);
-                        mIntent.putExtra("postImageUrl", model.getImageUrl());
-                        GaleriaActivity.this.startActivity(mIntent);
+
+                        Query mQuery = FirebaseDatabase.getInstance().getReference("posts").child("galeria");
+                        mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                ArrayList<String> images = new ArrayList<>();
+                                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                                    images.add(dataSnapshot1.child("imageUrl").getValue(String.class));
+                                }
+                                Intent mIntent = new Intent(GaleriaActivity.this, FotoDetallesActivity.class);
+                                if(!images.isEmpty()){
+                                    mIntent.putStringArrayListExtra("ArrayImagenes", images);
+                                    mIntent.putExtra("posicion", position);
+                                    mIntent.putExtra("primero", true);
+                                    Log.d("ArrayEnviado", images.get(0));
+                                }
+                                GaleriaActivity.this.startActivity(mIntent);
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
                     }
                 });
 
@@ -110,6 +128,7 @@ public class GaleriaActivity extends AppCompatActivity {
                                         @Override
                                         public void onSuccess() {
                                             viewHolder.mProgressBar.setVisibility(View.GONE);
+                                            viewHolder.foto.setVisibility(View.VISIBLE);
                                         }
 
                                         @Override
@@ -129,10 +148,6 @@ public class GaleriaActivity extends AppCompatActivity {
         };
         mGaleriaRV.setAdapter(firebaseRecyclerAdapter);
         mGaleriaRV.setNestedScrollingEnabled(false);
-    }
-
-    protected int getRandomIntInRange(int max, int min){
-        return mRandom.nextInt((max-min)+min)+min;
     }
 
     @Override

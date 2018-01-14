@@ -2,11 +2,14 @@ package com.example.angel.imjut.HomeActivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
 import com.example.angel.imjut.R;
 
 public class BolsaTrabajoActivity extends AppCompatActivity {
+
+    private RecyclerView mBolsaTrabajoRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
