@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mInicioRV = (RecyclerView) rootView.findViewById(R.id.inicio_rv);
+        mInicioRV = rootView.findViewById(R.id.inicio_rv);
         mInicioRV.setHasFixedSize(true);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext()){
             @Override
@@ -66,14 +66,13 @@ public class HomeFragment extends Fragment{
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.modelo_cardview_inicio, parent, false));
-            tv_titulo = (TextView) itemView.findViewById(R.id.tv_titulo);
-            layout = (LinearLayout) itemView.findViewById(R.id.cardView);
+            tv_titulo = itemView.findViewById(R.id.tv_titulo);
+            layout = itemView.findViewById(R.id.cardView);
         }
 
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of List in RecyclerView.
         private static final int LENGTH = 4;
         private final String[] mPlaces;
         private Resources resources;
@@ -97,7 +96,6 @@ public class HomeFragment extends Fragment{
         @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            //holder.avator.setImageDrawable(mPlaceAvators[position % mPlaceAvators.length]);
             holder.tv_titulo.setText(mPlaces[position % mPlaces.length]);
 
             switch (position){

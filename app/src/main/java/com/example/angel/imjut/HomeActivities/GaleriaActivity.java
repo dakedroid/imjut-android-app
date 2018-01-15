@@ -31,13 +31,11 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class GaleriaActivity extends AppCompatActivity {
 
     private RecyclerView mGaleriaRV;
     private static Context context;
-    private Random mRandom = new Random();
 
     public static Context getAppContext() {
         return GaleriaActivity.context;
@@ -49,7 +47,6 @@ public class GaleriaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_galeria);
         GaleriaActivity.context = getApplicationContext();
         getSupportActionBar().setTitle("Galería");
-
 
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(this, 3);
 
@@ -71,7 +68,6 @@ public class GaleriaActivity extends AppCompatActivity {
         }
     }
 
-
     private void setupAdapter(){
         FirebaseRecyclerAdapter<Foto, GaleriaActivity.ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Foto, GaleriaActivity.ViewHolder>(
                 Foto.class,
@@ -81,7 +77,6 @@ public class GaleriaActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(final ViewHolder viewHolder, final Foto model,final int position) {
-                //viewHolder.contenedorFoto.getLayoutParams().height = getRandomIntInRange(230,130);
                 viewHolder.contenedorFoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -94,7 +89,7 @@ public class GaleriaActivity extends AppCompatActivity {
                                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                                     images.add(dataSnapshot1.child("imageUrl").getValue(String.class));
                                 }
-                                Intent mIntent = new Intent(GaleriaActivity.this, FotoDetallesActivity.class);
+                                Intent mIntent = new Intent(GaleriaActivity.this, GaleriaDetallesActivity.class);
                                 if(!images.isEmpty()){
                                     mIntent.putStringArrayListExtra("ArrayImagenes", images);
                                     mIntent.putExtra("posicion", position);
@@ -108,19 +103,14 @@ public class GaleriaActivity extends AppCompatActivity {
 
                             }
                         });
-
-
                     }
                 });
 
                 if(model.getImageUrl() != null){
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getImageUrl());
-
                     load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            // Got the download URL for 'users/me/profile.png'
-                            // Pass it to Picasso to download, show in ImageView and caching
                             Picasso
                                     .with(context)
                                     .load(uri.toString())

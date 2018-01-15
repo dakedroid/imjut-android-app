@@ -29,6 +29,8 @@ public class RegistrarseActivity extends AppCompatActivity {
     @BindView(R.id.et_contra) EditText et_pass;
     @BindView(R.id.et_confirmar_contra) EditText et_confirmarPass;
     @BindView(R.id.et_nombre) EditText et_nombre;
+    @BindView(R.id.et_apellido) EditText et_apellido;
+    @BindView(R.id.et_edad) EditText et_edad;
     private Button btnCrearCuenta;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -36,6 +38,8 @@ public class RegistrarseActivity extends AppCompatActivity {
     private String email;
     private String pass;
     private String nombre;
+    private String apellidos;
+    private String edad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 FirebaseUser mUser = mAuth.getCurrentUser();
                                 String uid = mUser.getUid();
-                                saveUserToDatabase(nombre,email,uid);
+                                saveUserToDatabase(nombre,email,uid,apellidos,edad);
                             }else{
                                 Toast.makeText(RegistrarseActivity.this, R.string.error_registro, Toast.LENGTH_SHORT).show();
                             }
@@ -96,6 +100,8 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     private boolean validarForm(){
         boolean valido = true;
+        apellidos = et_apellido.getText().toString();
+        edad = et_edad.getText().toString();
         email = et_email.getText().toString();
         pass = et_pass.getText().toString();
         nombre = et_nombre.getText().toString();
@@ -129,16 +135,30 @@ public class RegistrarseActivity extends AppCompatActivity {
 
         if(TextUtils.isEmpty(nombre)){
             valido = false;
-            et_nombre.setError("Ingrese su nombre de usuario");
+            et_nombre.setError("Ingrese su nombre");
         }else{
             et_nombre.setError(null);
+        }
+
+        if(TextUtils.isEmpty(apellidos)){
+            valido = false;
+            et_apellido.setError("Ingrese su apellido");
+        }else{
+            et_apellido.setError(null);
+        }
+
+        if(TextUtils.isEmpty(edad)){
+            valido = false;
+            et_edad.setError("Ingrese su edad");
+        }else{
+            et_edad.setError(null);
         }
 
         return valido;
     }
 
-    private void saveUserToDatabase(String name, String email, String uid){
-        User user = new User(name,email,uid);
+    private void saveUserToDatabase(String name, String email, String uid, String apellidos, String edad){
+        User user = new User(name,apellidos,edad,email,uid);
         mUserRef = FirebaseDatabase.getInstance().getReference();
         mUserRef.child("users")
                 .child(email.replace(".",","))

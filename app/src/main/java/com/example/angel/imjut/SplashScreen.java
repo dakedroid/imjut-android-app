@@ -51,8 +51,7 @@ public class SplashScreen extends AppCompatActivity {
                         }
                     };
                     final Handler h = new Handler();
-                    h.removeCallbacks(runnable); // cancel the running action (the
-                    // hiding process)
+                    h.removeCallbacks(runnable);
                     h.postDelayed(runnable, 50);
 
                 }

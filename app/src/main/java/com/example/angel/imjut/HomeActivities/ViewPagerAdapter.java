@@ -5,7 +5,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,11 +29,10 @@ import it.sephiroth.android.library.imagezoom.ImageViewTouch;
  */
 
 public class ViewPagerAdapter extends PagerAdapter {
-    Activity activity;
-    //images;
-    ArrayList<String> images = new ArrayList<>();
-    LayoutInflater inflater;
-    int posicion;
+    private Activity activity;
+    private ArrayList<String> images = new ArrayList<>();
+    private LayoutInflater inflater;
+    private int posicion;
 
     public ViewPagerAdapter(Activity activity, ArrayList<String> images, int posicion) {
         this.activity = activity;
@@ -70,16 +68,12 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         try{
             StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(images.get(position));
-
             load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    // Got the download URL for 'users/me/profile.png'
-                    // Pass it to Picasso to download, show in ImageView and caching
                     Picasso
                             .with(activity.getApplicationContext())
                             .load(uri.toString())
-                            .placeholder(R.mipmap.ic_launcher)
                             .error(R.mipmap.ic_launcher)
                             .into(image, new Callback() {
                                 @Override
@@ -110,7 +104,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        ((ViewPager) container).removeView((View)object);
+        (container).removeView((View)object);
     }
 }
 

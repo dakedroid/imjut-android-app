@@ -8,11 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.angel.imjut.Modelos.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AsistirActivity extends AppCompatActivity {
-
+    private Query mUser;
 
     private Button btn_registrarse;
     private TextView tv_volver;
@@ -33,7 +41,11 @@ public class AsistirActivity extends AppCompatActivity {
         setContentView(R.layout.activity_asistir);
         ButterKnife.bind(this);
 
-        btn_registrarse = (Button) findViewById(R.id.registrarse_asistir);
+        if(FirebaseAuth.getInstance().getCurrentUser().getEmail() != null){
+            llenarForm();
+        }
+
+        btn_registrarse = findViewById(R.id.registrarse_asistir);
         btn_registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,11 +54,31 @@ public class AsistirActivity extends AppCompatActivity {
                 }
             }
         });
-        tv_volver = (TextView) findViewById(R.id.volver);
+        tv_volver = findViewById(R.id.volver);
         tv_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+    }
+
+    public void llenarForm(){
+        String mCurrentEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail().replace(".",",");
+        mUser = FirebaseDatabase.getInstance().getReference().child("users").child(mCurrentEmail);
+        mUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User mCurrentUser = dataSnapshot.getValue(User.class);
+                et_nombre.setText(mCurrentUser.getName());
+                et_apellido.setText(mCurrentUser.getApellido());
+                et_edad.setText(mCurrentUser.getEdad());
+                et_correo.setText(mCurrentUser.getEmail());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

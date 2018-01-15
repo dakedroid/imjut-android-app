@@ -1,6 +1,5 @@
 package com.example.angel.imjut;
 
-import android.app.Application;
 import android.content.res.Configuration;
 import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
@@ -17,7 +16,6 @@ public class Imjut extends MultiDexApplication {
     private FirebaseDatabase database;
     private static boolean s_persistenceInitialized = false;
 
-    // prueba con ssh
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -37,7 +35,6 @@ public class Imjut extends MultiDexApplication {
                 s_persistenceInitialized = true;
             }
         }
-
     }
 
     @Override

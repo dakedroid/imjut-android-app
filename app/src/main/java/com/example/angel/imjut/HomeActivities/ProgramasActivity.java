@@ -51,7 +51,6 @@ public class ProgramasActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Programas");
 
         mProgramasRV = findViewById(R.id.programasRV);
-        //mProgramasRV.setHasFixedSize(true);
         mProgramasRV.setLayoutManager(new LinearLayoutManager(this));
         setupAdapter();
     }
@@ -59,11 +58,9 @@ public class ProgramasActivity extends AppCompatActivity {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ProgressBar progressBar;
         ImageView iv_programa;
-        //TextView titulo;
         TextView tv_objetivos;
         TextView tituloObjetivo;
         RelativeLayout layout_asistir;
-        //RelativeLayout layout_titulo;
         LinearLayout layout_objetivos;
         LinearLayout descriptionCardView;
         private int descriptionViewFullHeight;
@@ -74,13 +71,10 @@ public class ProgramasActivity extends AppCompatActivity {
         public ViewHolder(View itemView) {
             super(itemView);
             iv_programa = itemView.findViewById(R.id.imagenPrograma);
-            //titulo = itemView.findViewById(R.id.tv_titulo);
             tv_objetivos = itemView.findViewById(R.id.objetivos);
             tituloObjetivo = itemView.findViewById(R.id.Titulo_objetivos);
             layout_asistir = itemView.findViewById(R.id.layout_asistir);
             layout_asistir.setBackgroundResource(R.drawable.layout_circle);
-            //layout_titulo = itemView.findViewById(R.id.layout_titulo);
-            //layout_titulo.setBackgroundResource(R.drawable.layout_circle);
             descriptionCardView = itemView.findViewById(R.id.cardViewProgramas);
             progressBar = itemView.findViewById(R.id.progress_bar);
 
@@ -92,7 +86,6 @@ public class ProgramasActivity extends AppCompatActivity {
             layout_objetivos = itemView.findViewById(R.id.layout_objetivos);
             layout_objetivos.setBackgroundResource(R.drawable.layout_circle_objetivo);
 
-
             info = itemView.findViewById(R.id.info);
             info.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,16 +93,9 @@ public class ProgramasActivity extends AppCompatActivity {
                     toggleProductDescriptionHeight();
                 }
             });
-
-
-
         }
 
         private void toggleProductDescriptionHeight() {
-
-            // card_expand = 600
-            // card_size_prueba = 750
-
             descriptionViewFullHeight = descriptionCardView.getHeight() + (int) getAppContext().getResources().getDimension(R.dimen.card_expand_places);
             descriptionViewMinHeight = descriptionCardView.getHeight();
 
@@ -129,9 +115,6 @@ public class ProgramasActivity extends AppCompatActivity {
                 });
                 anim.start();
                 layout_objetivos.setVisibility(View.VISIBLE);
-                //ratingBar.setVisibility(View.VISIBLE);
-                //title.setMaxLines(2);
-
             } else {
                 // collapse
                 descriptionViewMinHeight = (int) getAppContext().getResources().getDimension(R.dimen.card_size_prueba);
@@ -156,15 +139,8 @@ public class ProgramasActivity extends AppCompatActivity {
                         layout_objetivos.setVisibility(View.INVISIBLE);
                     }
                 });
-
-
-                //ratingBar.setVisibility(View.INVISIBLE);
-                //title.setMaxLines(1);
-
             }
         }
-
-
     }
 
     private void setupAdapter(){
@@ -178,7 +154,6 @@ public class ProgramasActivity extends AppCompatActivity {
             protected void populateViewHolder(final ViewHolder viewHolder, final Programa model, int position) {
                 viewHolder.tv_objetivos.setText(model.getObjetivos());
                 viewHolder.tituloObjetivo.setText(model.getTitulo());
-                //viewHolder.titulo.setText(model.getTitulo());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -187,15 +162,10 @@ public class ProgramasActivity extends AppCompatActivity {
                 });
 
                 if(model.getPostImageUrl() != null){
-                    StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
-
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
-
                     load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            // Got the download URL for 'users/me/profile.png'
-                            // Pass it to Picasso to download, show in ImageView and caching
                             Picasso
                                     .with(context)
                                     .load(uri.toString())
@@ -241,7 +211,5 @@ public class ProgramasActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
 

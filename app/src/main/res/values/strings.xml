@@ -24,7 +24,7 @@
     <string name="confirmar">Confirmar Contraseña</string>
     <string name="registrarse">Crear Cuenta</string>
     <string name="contras_iguales">Las contraseñas no son iguales</string>
-    <string name="nombre">Nombre de usuario</string>
+    <string name="nombre">Nombre(s)</string>
     <string name="guardado">Guardado Correctamente en la Base de datos</string>
     <string name="error_registro">Error al crear el usuario</string>
 

@@ -52,7 +52,6 @@ public class EventosActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Eventos");
 
         mEventosRV = findViewById(R.id.eventosRV);
-        //mProgramasRV.setHasFixedSize(true);
         mEventosRV.setLayoutManager(new LinearLayoutManager(this));
         setupAdapter();
     }
@@ -60,11 +59,9 @@ public class EventosActivity extends AppCompatActivity {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ProgressBar progressBar;
         ImageView iv_evento;
-        //TextView titulo;
         TextView tv_descripcion;
         TextView tituloEvento;
         RelativeLayout layout_asistir;
-        //RelativeLayout layout_titulo;
         LinearLayout layout_descripcion;
         LinearLayout descriptionCardView;
         private int descriptionViewFullHeight;
@@ -75,13 +72,10 @@ public class EventosActivity extends AppCompatActivity {
         public ViewHolder(View itemView) {
             super(itemView);
             iv_evento = itemView.findViewById(R.id.imagenEvento);
-            //titulo = itemView.findViewById(R.id.tv_titulo);
             tv_descripcion = itemView.findViewById(R.id.descripcionEvento);
             tituloEvento = itemView.findViewById(R.id.titulo_evento);
             layout_asistir = itemView.findViewById(R.id.layout_asistir);
             layout_asistir.setBackgroundResource(R.drawable.layout_circle);
-            //layout_titulo = itemView.findViewById(R.id.layout_titulo);
-            //layout_titulo.setBackgroundResource(R.drawable.layout_circle);
             descriptionCardView = itemView.findViewById(R.id.cardViewEventos);
             progressBar = itemView.findViewById(R.id.progress_bar);
 
@@ -104,10 +98,6 @@ public class EventosActivity extends AppCompatActivity {
         }
 
         private void toggleProductDescriptionHeight() {
-
-            // card_expand = 600
-            // card_size_prueba = 750
-
             descriptionViewFullHeight = descriptionCardView.getHeight() + (int) getAppContext().getResources().getDimension(R.dimen.card_expand_places);
             descriptionViewMinHeight = descriptionCardView.getHeight();
 
@@ -127,8 +117,6 @@ public class EventosActivity extends AppCompatActivity {
                 });
                 anim.start();
                 layout_descripcion.setVisibility(View.VISIBLE);
-                //ratingBar.setVisibility(View.VISIBLE);
-                //title.setMaxLines(2);
 
             } else {
                 // collapse
@@ -154,11 +142,6 @@ public class EventosActivity extends AppCompatActivity {
                         layout_descripcion.setVisibility(View.INVISIBLE);
                     }
                 });
-
-
-                //ratingBar.setVisibility(View.INVISIBLE);
-                //title.setMaxLines(1);
-
             }
         }
     }
@@ -175,14 +158,13 @@ public class EventosActivity extends AppCompatActivity {
                 viewHolder.iv_evento.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mIntent = new Intent(EventosActivity.this, FotoDetallesActivity.class);
+                        Intent mIntent = new Intent(EventosActivity.this, DetallesEventoActivity.class);
                         mIntent.putExtra("postImageUrl", model.getPostImageUrl());
                         EventosActivity.this.startActivity(mIntent);
                     }
                 });
                 viewHolder.tituloEvento.setText(model.getTitulo());
                 viewHolder.tv_descripcion.setText(model.getDescripcion());
-                //viewHolder.titulo.setText(model.getTitulo());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -191,12 +173,11 @@ public class EventosActivity extends AppCompatActivity {
                                 .setMessage("Se le notificara una hora antes del evento")
                                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        // FIRE ZE MISSILES!
+
                                     }
                                 })
                                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        // User cancelled the dialog
                                     }
                                 });
                         builder.show();
@@ -205,14 +186,11 @@ public class EventosActivity extends AppCompatActivity {
                 });
 
                 if(model.getPostImageUrl() != null){
-                    StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
 
                     load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            // Got the download URL for 'users/me/profile.png'
-                            // Pass it to Picasso to download, show in ImageView and caching
                             Picasso
                                     .with(context)
                                     .load(uri.toString())

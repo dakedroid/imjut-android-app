@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        btnLogin = (Button) findViewById(R.id.btn_ingresar);
+        btnLogin = findViewById(R.id.btn_ingresar);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        tv_registrarse = (TextView) findViewById(R.id.tv_registrarse);
+        tv_registrarse = findViewById(R.id.tv_registrarse);
         tv_registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -67,9 +67,11 @@
         <activity android:name=".AsistirActivity" />
         <activity android:name=".SubirContenido.SubirContenidoPrueba" />
         <activity
-            android:name=".HomeActivities.FotoDetallesActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:name=".HomeActivities.GaleriaDetallesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".HomeActivities.DetallesEventoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

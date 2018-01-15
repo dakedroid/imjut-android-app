@@ -8,7 +8,7 @@ import com.example.angel.imjut.R;
 
 import java.util.ArrayList;
 
-public class FotoDetallesActivity extends AppCompatActivity {
+public class GaleriaDetallesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +21,8 @@ public class FotoDetallesActivity extends AppCompatActivity {
         ViewPager mViewPager;
         ViewPagerAdapter mViewPagerAdapter;
 
-        mViewPager = (ViewPager)findViewById(R.id.view_pager);
-        mViewPagerAdapter = new ViewPagerAdapter(FotoDetallesActivity.this,images, posicion);
+        mViewPager = findViewById(R.id.view_pager);
+        mViewPagerAdapter = new ViewPagerAdapter(GaleriaDetallesActivity.this,images, posicion);
         mViewPager.setAdapter(mViewPagerAdapter);
         mViewPager.setCurrentItem(posicion,true);
         Log.d("viewPagePos", String.valueOf(posicion));
