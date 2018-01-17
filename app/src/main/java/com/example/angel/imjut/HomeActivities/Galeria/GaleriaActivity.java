@@ -1,4 +1,4 @@
-package com.example.angel.imjut.HomeActivities;
+package com.example.angel.imjut.HomeActivities.Galeria;
 
 import android.content.Context;
 import android.content.Intent;
@@ -46,7 +46,7 @@ public class GaleriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galeria);
         GaleriaActivity.context = getApplicationContext();
-        getSupportActionBar().setTitle("Galería");
+        getSupportActionBar().setTitle(R.string.galeria_title);
 
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(this, 3);
 

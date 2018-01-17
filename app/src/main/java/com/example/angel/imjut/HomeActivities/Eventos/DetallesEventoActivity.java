@@ -1,4 +1,4 @@
-package com.example.angel.imjut.HomeActivities;
+package com.example.angel.imjut.HomeActivities.Eventos;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;

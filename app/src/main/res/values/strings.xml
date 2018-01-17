@@ -58,5 +58,14 @@
     <string name="facebook">Facebook</string>
     <string name="atras"> &lt;&lt; Volver</string>
 
+    <!-- Bolsa Trabajo -->
+    <string name="titulo_bolsa">Coca Cola</string>
+
+    <!-- Home Activities Titles -->
+    <string name="programas_title">Programas</string>
+    <string name="eventos_title">Eventos</string>
+    <string name="bolsa_title">Bolsa de trabajo</string>
+    <string name="galeria_title">Galería</string>
+
 
 </resources>

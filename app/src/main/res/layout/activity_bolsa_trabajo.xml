@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.angel.imjut.HomeActivities.BolsaTrabajoActivity">
+    tools:context="com.example.angel.imjut.HomeActivities.BolsaTrabajo.BolsaTrabajoActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/bolsa_trabajo_rv"

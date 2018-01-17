@@ -1,4 +1,4 @@
-package com.example.angel.imjut.HomeActivities;
+package com.example.angel.imjut.HomeActivities.Eventos;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -49,7 +49,7 @@ public class EventosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_eventos);
         EventosActivity.context = getApplicationContext();
 
-        getSupportActionBar().setTitle("Eventos");
+        getSupportActionBar().setTitle(R.string.eventos_title);
 
         mEventosRV = findViewById(R.id.eventosRV);
         mEventosRV.setLayoutManager(new LinearLayoutManager(this));

@@ -1,4 +1,4 @@
-package com.example.angel.imjut.HomeActivities;
+package com.example.angel.imjut.HomeActivities.Galeria;
 
 import android.app.Activity;
 import android.content.Context;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.angel.imjut.HomeActivities.EventosActivity">
+    tools:context="com.example.angel.imjut.HomeActivities.Eventos.EventosActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/eventosRV"

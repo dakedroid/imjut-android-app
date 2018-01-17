@@ -1,9 +1,10 @@
-package com.example.angel.imjut.HomeActivities;
+package com.example.angel.imjut.HomeActivities.Galeria;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
 import com.example.angel.imjut.R;
 
 import java.util.ArrayList;

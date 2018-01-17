@@ -1,4 +1,4 @@
-package com.example.angel.imjut.HomeActivities;
+package com.example.angel.imjut.HomeActivities.Programas;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -48,7 +48,7 @@ public class ProgramasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_programas);
         ProgramasActivity.context = getApplicationContext();
 
-        getSupportActionBar().setTitle("Programas");
+        getSupportActionBar().setTitle(R.string.programas_title);
 
         mProgramasRV = findViewById(R.id.programasRV);
         mProgramasRV.setLayoutManager(new LinearLayoutManager(this));

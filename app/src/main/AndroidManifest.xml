@@ -33,7 +33,7 @@
         <activity android:name=".RegistrarseActivity" />
         <activity android:name=".LoginActivity" />
         <activity
-            android:name=".HomeActivities.EventosActivity"
+            android:name=".HomeActivities.Eventos.EventosActivity"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
@@ -41,7 +41,7 @@
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
         <activity
-            android:name=".HomeActivities.BolsaTrabajoActivity"
+            android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoActivity"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
@@ -49,7 +49,7 @@
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
         <activity
-            android:name=".HomeActivities.GaleriaActivity"
+            android:name=".HomeActivities.Galeria.GaleriaActivity"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
@@ -57,7 +57,7 @@
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
         <activity
-            android:name=".HomeActivities.ProgramasActivity"
+            android:name=".HomeActivities.Programas.ProgramasActivity"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
@@ -67,11 +67,15 @@
         <activity android:name=".AsistirActivity" />
         <activity android:name=".SubirContenido.SubirContenidoPrueba" />
         <activity
-            android:name=".HomeActivities.GaleriaDetallesActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:name=".HomeActivities.Galeria.GaleriaDetallesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".HomeActivities.DetallesEventoActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:name=".HomeActivities.Eventos.DetallesEventoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoDetalles"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

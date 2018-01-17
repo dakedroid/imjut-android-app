@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/layout_bolsa"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/image_bolsa_trabajo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tv_bolsa_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_bolsa"
+        android:textColor="@color/white"
+        android:textAppearance="@style/Theme.AppCompat.Light"
+        android:layout_alignParentBottom="true"
+        android:textSize="30sp"
+        android:layout_margin="6dp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>

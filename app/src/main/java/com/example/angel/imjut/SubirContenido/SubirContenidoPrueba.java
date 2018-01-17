@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.angel.imjut.Modelos.BolsaTrabajo;
 import com.example.angel.imjut.Modelos.Evento;
 import com.example.angel.imjut.Modelos.Foto;
 import com.example.angel.imjut.Modelos.Programa;
@@ -74,6 +75,9 @@ public class SubirContenidoPrueba extends AppCompatActivity {
                         case "galeria":
                             sendFotoToGalery();
                             break;
+                        case "bolsa":
+                            sendBolsa();
+                            break;
                         default:
                             Toast.makeText(SubirContenidoPrueba.this, "Clase no valida", Toast.LENGTH_SHORT).show();
                             break;
@@ -81,6 +85,33 @@ public class SubirContenidoPrueba extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void sendBolsa(){
+        BolsaTrabajo bolsaTrabajo = new BolsaTrabajo();
+        String folder = "bolsaTrabajo";
+
+        String tituloMarca = et_programa.getText().toString();
+        String requisitos = et_objetivo.getText().toString();
+        String postId = getUid();
+
+        bolsaTrabajo.setMarca(tituloMarca);
+        bolsaTrabajo.setRequisitos(requisitos);
+        bolsaTrabajo.setPostId(postId);
+
+        String postImageUrl = "gs://imjut-ecdca.appspot.com/imagenes/" + folder + "/img" + bolsaTrabajo.getPostId()+ ".jpg";
+
+
+        bolsaTrabajo.setPostImageUrl(postImageUrl);
+
+        FirebaseDatabase.getInstance().getReference("posts").child("bolsa").child(postId).setValue(bolsaTrabajo, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                Toast.makeText(SubirContenidoPrueba.this, R.string.guardado, Toast.LENGTH_SHORT).show();
+            }
+        });
+        uploadFile(bolsaTrabajo.getPostId(), folder);
+
     }
 
     private void sendFotoToGalery(){
