@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment{
             metrics = new DisplayMetrics();
             mContext = context;
             mActivity = activity;
-            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         }
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

@@ -10,4 +10,11 @@
     <string-array name="programas">
         <item>E.Cat</item>
     </string-array>
+
+    <array name="iconos">
+        <item>@drawable/normal_128</item>
+        <item>@drawable/normal_128</item>
+        <item>@drawable/normal_128</item>
+        <item>@drawable/normal_128</item>
+    </array>
 </resources>

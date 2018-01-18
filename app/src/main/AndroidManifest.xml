@@ -65,7 +65,6 @@
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
         <activity android:name=".AsistirActivity" />
-        <activity android:name=".SubirContenido.SubirContenidoPrueba" />
         <activity
             android:name=".HomeActivities.Galeria.GaleriaDetallesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -74,8 +73,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoDetalles"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ContactoActivity" />
+        <activity android:name=".AcercaDeActivity" />
+        <activity android:name=".SubirContenido.PanelSubirContenido"></activity>
     </application>
 
 </manifest>

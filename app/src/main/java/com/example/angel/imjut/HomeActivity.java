@@ -8,11 +8,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.angel.imjut.SubirContenido.SubirContenidoPrueba;
+import com.example.angel.imjut.Modelos.User;
+import com.example.angel.imjut.SubirContenido.PanelSubirContenido;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -41,10 +48,10 @@ public class HomeActivity extends AppCompatActivity {
         };
 
         //DrawerLayout
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         //Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         assert toolbar != null;
         toolbar.setNavigationIcon(R.mipmap.ic_menu_black_18dp);
@@ -56,11 +63,33 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //Menu
-        NavigationView navigation = (NavigationView) findViewById(R.id.navigation);
+        final NavigationView navigation = findViewById(R.id.navigation);
         assert navigation != null;
         navigation.setNavigationItemSelectedListener(mNavigationItemSelectedListener);
         navigation.inflateHeaderView(R.layout.design_navigation);
 
+        final String mCurrentEmailUser = mAuth.getCurrentUser().getEmail().replace(".",",");
+        Query mQuery = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(mCurrentEmailUser);
+        mQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User mCurrentUser = dataSnapshot.getValue(User.class);
+                assert mCurrentUser != null;
+                boolean permisos = mCurrentUser.isPermisos_admin();
+                Log.d("Permisos", String.valueOf(permisos));
+                if(permisos){
+                    navigation.getMenu().findItem(R.id.navigation_item_subir).setVisible(true);
+                }else{
+                    navigation.getMenu().findItem(R.id.navigation_item_subir).setVisible(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     @Override
@@ -101,8 +130,14 @@ public class HomeActivity extends AppCompatActivity {
     public boolean handleNavigationItemSelected(MenuItem item){
 
         switch (item.getItemId()){
-            case R.id.navigation_item_1:
-                startActivity(new Intent(this, SubirContenidoPrueba.class));
+            case R.id.navigation_item_3:
+                startActivity(new Intent(this, ContactoActivity.class));
+                return true;
+            case R.id.navigation_item_4:
+                startActivity(new Intent(this, AcercaDeActivity.class));
+                return true;
+            case R.id.navigation_item_subir:
+                startActivity(new Intent(this, PanelSubirContenido.class));
                 return true;
             case R.id.navigation_item_5:
                 mAuth.signOut();

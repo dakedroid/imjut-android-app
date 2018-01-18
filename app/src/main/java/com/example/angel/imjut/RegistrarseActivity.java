@@ -61,7 +61,7 @@ public class RegistrarseActivity extends AppCompatActivity {
             }
         };
 
-        btnCrearCuenta = (Button) findViewById(R.id.btn_crear_cuenta);
+        btnCrearCuenta = findViewById(R.id.btn_crear_cuenta);
         btnCrearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 FirebaseUser mUser = mAuth.getCurrentUser();
                                 String uid = mUser.getUid();
-                                saveUserToDatabase(nombre,email,uid,apellidos,edad);
+                                saveUserToDatabase(nombre,email,uid,apellidos,edad, false);
                             }else{
                                 Toast.makeText(RegistrarseActivity.this, R.string.error_registro, Toast.LENGTH_SHORT).show();
                             }
@@ -157,8 +157,8 @@ public class RegistrarseActivity extends AppCompatActivity {
         return valido;
     }
 
-    private void saveUserToDatabase(String name, String email, String uid, String apellidos, String edad){
-        User user = new User(name,apellidos,edad,email,uid);
+    private void saveUserToDatabase(String name, String email, String uid, String apellidos, String edad, boolean permisos){
+        User user = new User(name,apellidos,edad,email,uid, permisos);
         mUserRef = FirebaseDatabase.getInstance().getReference();
         mUserRef.child("users")
                 .child(email.replace(".",","))

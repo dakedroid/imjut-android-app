@@ -10,17 +10,19 @@ public class User {
     private String edad;
     private String email;
     private String uid;
+    private boolean permisos_admin;
 
     public User(){
 
     }
 
-    public User(String name, String apellido, String edad, String email, String uid) {
+    public User(String name, String apellido, String edad, String email, String uid, boolean permisos_admin) {
         this.name = name;
         this.apellido = apellido;
         this.edad = edad;
         this.email = email;
         this.uid = uid;
+        this.permisos_admin = permisos_admin;
     }
 
     public String getName() {
@@ -61,5 +63,13 @@ public class User {
 
     public void setEdad(String edad) {
         this.edad = edad;
+    }
+
+    public boolean isPermisos_admin() {
+        return permisos_admin;
+    }
+
+    public void setPermisos_admin(boolean permisos_admin) {
+        this.permisos_admin = permisos_admin;
     }
 }
