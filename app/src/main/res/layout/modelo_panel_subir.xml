@@ -12,8 +12,7 @@
         android:layout_margin="16dp"
         android:id="@+id/icono_subir"
         android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_height="35dp"/>
 
     <TextView
         android:layout_gravity="center_vertical"

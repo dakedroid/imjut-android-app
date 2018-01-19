@@ -76,7 +76,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ContactoActivity" />
         <activity android:name=".AcercaDeActivity" />
-        <activity android:name=".SubirContenido.PanelSubirContenido"></activity>
+        <activity android:name=".SubirContenido.PanelSubirContenido" />
+        <activity android:name=".SubirContenido.SubirProgramaActivity" />
+        <activity android:name=".SubirContenido.SubirEventoActivity" />
+        <activity android:name=".SubirContenido.SubirGaleriaActivity" />
+        <activity android:name=".SubirContenido.SubirBolsaTrabajoActivity"></activity>
     </application>
 
 </manifest>

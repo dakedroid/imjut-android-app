@@ -8,7 +8,8 @@
         <item
             android:id="@+id/navigation_item_1"
             android:title="@string/menu_notificaciones"
-            app:actionLayout="@layout/toggle_button" />
+            app:actionLayout="@layout/toggle_button"
+            android:icon="@mipmap/ic_notification"/>
         <!--
         <item
             android:id="@+id/navigation_item_2"
@@ -16,19 +17,23 @@
         -->
 
         <item
+            android:icon="@mipmap/ic_contacto"
             android:id="@+id/navigation_item_3"
             android:title="@string/menu_contacto"/>
 
         <item
+            android:icon="@mipmap/ic_acerca"
             android:id="@+id/navigation_item_4"
             android:title="@string/menu_acerca_de"/>
 
         <item
+            android:icon="@mipmap/ic_subir"
             android:id="@+id/navigation_item_subir"
             android:title="@string/menu_subir_contenido"
             android:visible="false"/>
 
         <item
+            android:icon="@mipmap/ic_cerrar_sesion"
             android:id="@+id/navigation_item_5"
             android:title="@string/menu_cerrar_sesion"/>
     </group>

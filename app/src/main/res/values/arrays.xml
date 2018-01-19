@@ -12,9 +12,9 @@
     </string-array>
 
     <array name="iconos">
-        <item>@drawable/normal_128</item>
-        <item>@drawable/normal_128</item>
-        <item>@drawable/normal_128</item>
-        <item>@drawable/normal_128</item>
+        <item>@mipmap/ic_programas</item>
+        <item>@mipmap/ic_eventos</item>
+        <item>@mipmap/ic_bolsa_trabajo</item>
+        <item>@mipmap/ic_galeria</item>
     </array>
 </resources>

@@ -8,18 +8,32 @@ public class BolsaTrabajo {
 
     private String marca;
     private String postImageUrl;
-    private String requisitos;
     private String postId;
+    private String timeCreated;
+    private String educacion;
+    private String descripcionGeneral;
+    private String tipoPuesto;
+    private String sueldo;
+    private String experiencia;
+    private String habilidades;
+    private String requisitosGenerales;
 
     public BolsaTrabajo(){
 
     }
 
-    public BolsaTrabajo(String marca, String postImageUrl, String requisitos, String postId) {
+    public BolsaTrabajo(String marca, String postImageUrl, String postId, String timeCreated, String educacion, String descripcionGeneral, String tipoPuesto, String sueldo, String experiencia, String habilidades, String requisitosGenerales) {
         this.marca = marca;
         this.postImageUrl = postImageUrl;
-        this.requisitos = requisitos;
         this.postId = postId;
+        this.timeCreated = timeCreated;
+        this.educacion = educacion;
+        this.descripcionGeneral = descripcionGeneral;
+        this.tipoPuesto = tipoPuesto;
+        this.sueldo = sueldo;
+        this.experiencia = experiencia;
+        this.habilidades = habilidades;
+        this.requisitosGenerales = requisitosGenerales;
     }
 
     public String getMarca() {
@@ -38,19 +52,75 @@ public class BolsaTrabajo {
         this.postImageUrl = postImageUrl;
     }
 
-    public String getRequisitos() {
-        return requisitos;
-    }
-
-    public void setRequisitos(String requisitos) {
-        this.requisitos = requisitos;
-    }
-
     public String getPostId() {
         return postId;
     }
 
     public void setPostId(String postId) {
         this.postId = postId;
+    }
+
+    public String getTimeCreated() {
+        return timeCreated;
+    }
+
+    public void setTimeCreated(String timeCreated) {
+        this.timeCreated = timeCreated;
+    }
+
+    public String getEducacion() {
+        return educacion;
+    }
+
+    public void setEducacion(String educacion) {
+        this.educacion = educacion;
+    }
+
+    public String getDescripcionGeneral() {
+        return descripcionGeneral;
+    }
+
+    public void setDescripcionGeneral(String descripcionGeneral) {
+        this.descripcionGeneral = descripcionGeneral;
+    }
+
+    public String getTipoPuesto() {
+        return tipoPuesto;
+    }
+
+    public void setTipoPuesto(String tipoPuesto) {
+        this.tipoPuesto = tipoPuesto;
+    }
+
+    public String getSueldo() {
+        return sueldo;
+    }
+
+    public void setSueldo(String sueldo) {
+        this.sueldo = sueldo;
+    }
+
+    public String getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public String getHabilidades() {
+        return habilidades;
+    }
+
+    public void setHabilidades(String habilidades) {
+        this.habilidades = habilidades;
+    }
+
+    public String getRequisitosGenerales() {
+        return requisitosGenerales;
+    }
+
+    public void setRequisitosGenerales(String requisitosGenerales) {
+        this.requisitosGenerales = requisitosGenerales;
     }
 }

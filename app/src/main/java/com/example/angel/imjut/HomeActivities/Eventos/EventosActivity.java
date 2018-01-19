@@ -170,6 +170,7 @@ public class EventosActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(EventosActivity.this);
                         builder.setTitle("Aviso")
+                                .setIcon(R.mipmap.ic_notification)
                                 .setMessage("Se le notificara una hora antes del evento")
                                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {

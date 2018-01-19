@@ -71,14 +71,12 @@ public class HomeFragment extends Fragment{
         private static final int LENGTH = 4;
         private final String[] mPlaces;
         private Resources resources;
-        private DisplayMetrics metrics;
         private Context mContext;
         private Activity mActivity;
 
         public ContentAdapter(Context context, Activity activity) {
             resources = context.getResources();
             mPlaces = resources.getStringArray(R.array.titulos_carta);
-            metrics = new DisplayMetrics();
             mContext = context;
             mActivity = activity;
         }

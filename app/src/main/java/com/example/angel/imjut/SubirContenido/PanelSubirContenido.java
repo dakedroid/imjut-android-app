@@ -2,6 +2,7 @@ package com.example.angel.imjut.SubirContenido;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -86,16 +87,16 @@ public class PanelSubirContenido extends AppCompatActivity {
                 public void onClick(View view) {
                     switch (position){
                         case 0:
-                            Toast.makeText(mContext, "Prueba", Toast.LENGTH_SHORT).show();
+                            mContext.startActivity(new Intent(mActivity, SubirProgramaActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                             break;
                         case 1:
-                            Toast.makeText(mContext, "Prueba", Toast.LENGTH_SHORT).show();
+                            mContext.startActivity(new Intent(mActivity,SubirEventoActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                             break;
                         case 2:
-                            Toast.makeText(mContext, "Prueba", Toast.LENGTH_SHORT).show();
+                            mContext.startActivity(new Intent(mActivity,SubirBolsaTrabajoActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                             break;
                         case 3:
-                            Toast.makeText(mContext, "Prueba", Toast.LENGTH_SHORT).show();
+                            mContext.startActivity(new Intent(mActivity,SubirGaleriaActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                             break;
                         default:
                             break;

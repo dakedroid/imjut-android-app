@@ -9,16 +9,18 @@ public class Programa {
     private String titulo;
     private String objetivos;
     private String uid;
+    private long timeCreated;
 
     public Programa(){
 
     }
 
-    public Programa(String postImageUrl, String titulo, String objetivos, String uid) {
+    public Programa(String postImageUrl, String titulo, String objetivos, String uid, long timeCreated) {
         this.postImageUrl = postImageUrl;
         this.titulo = titulo;
         this.objetivos = objetivos;
         this.uid = uid;
+        this.timeCreated = timeCreated;
     }
 
     public String getPostImageUrl() {
@@ -51,5 +53,13 @@ public class Programa {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public long getTimeCreated() {
+        return timeCreated;
+    }
+
+    public void setTimeCreated(long timeCreated) {
+        this.timeCreated = timeCreated;
     }
 }
