@@ -63,7 +63,16 @@
     <string name="atras"> &lt;&lt; Volver</string>
 
     <!-- Bolsa Trabajo -->
-    <string name="titulo_bolsa">Coca Cola</string>
+    <string name="marca_bolsa">Empresa: </string>
+    <string name="tipo_trabajo">Tipo de puesto: </string>
+    <string name="sueldo_trabajo">Sueldo: </string>
+    <string name="descripcion_gral_del_empleo">Descripcion: </string>
+    <string name="requisitos_gral">Requisitos: </string>
+    <string name="educacion">Educación: </string>
+    <string name="habilidades">Habilidades: </string>
+    <string name="experiencia">Experiencia: </string>
+    <string name="postularme">Postularme</string>
+    <string name="postularme_btn">Enviar</string>
 
     <!-- Home Activities Titles -->
     <string name="programas_title">Programas</string>

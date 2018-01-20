@@ -77,6 +77,14 @@ public class BolsaTrabajoActivity extends AppCompatActivity {
                         Intent mDetallesIntent = new Intent(BolsaTrabajoActivity.this, BolsaTrabajoDetalles.class);
                         mDetallesIntent.putExtra("TITLE", model.getMarca());
                         mDetallesIntent.putExtra("PATH", model.getPostImageUrl());
+                        mDetallesIntent.putExtra("MARCA", model.getMarca());
+                        mDetallesIntent.putExtra("TIPO_PUESTO", model.getTipoPuesto());
+                        mDetallesIntent.putExtra("DESCRIPCION",model.getDescripcionGeneral());
+                        mDetallesIntent.putExtra("SUELDO", model.getSueldo());
+                        mDetallesIntent.putExtra("REQUISITOS", model.getRequisitosGenerales());
+                        mDetallesIntent.putExtra("EDUCACION", model.getEducacion());
+                        mDetallesIntent.putExtra("HABILIDADES", model.getHabilidades());
+                        mDetallesIntent.putExtra("EXPERIENCIA", model.getExperiencia());
                         BolsaTrabajoActivity.this.startActivity(mDetallesIntent);
                     }
                 });

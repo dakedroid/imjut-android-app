@@ -80,7 +80,8 @@
         <activity android:name=".SubirContenido.SubirProgramaActivity" />
         <activity android:name=".SubirContenido.SubirEventoActivity" />
         <activity android:name=".SubirContenido.SubirGaleriaActivity" />
-        <activity android:name=".SubirContenido.SubirBolsaTrabajoActivity"></activity>
+        <activity android:name=".SubirContenido.SubirBolsaTrabajoActivity" />
+        <activity android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoPostularse"></activity>
     </application>
 
 </manifest>
