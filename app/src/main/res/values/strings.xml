@@ -82,6 +82,14 @@
     <string name="subir_descripcion_evento">Descripcion del evento</string>
     <string name="elige_fecha">Elige la fecha</string>
     <string name="elige_hora">Elige la hora</string>
-    <string name="subir_foto">Subir foto</string>
+    <string name="subir_foto">Examinar</string>
     <string name="descripcion_foto">Descripción de la foto</string>
+    <string name="nombre_marca">Nombre de la marca</string>
+    <string name="tipo_empleo">Tipo de puesto</string>
+    <string name="descripcion_gral_empleo">Descripcion general del empleo</string>
+    <string name="sueldo_empleo">Sueldo</string>
+    <string name="requisitos_gral_empleo">Requisitos generales del empleo</string>
+    <string name="educacion_empleo">Educación</string>
+    <string name="habilidades_empleo">Habilidades</string>
+    <string name="experiencia_empleo">Experiencia</string>
 </resources>

@@ -9,7 +9,7 @@ public class BolsaTrabajo {
     private String marca;
     private String postImageUrl;
     private String postId;
-    private String timeCreated;
+    private long timeCreated;
     private String educacion;
     private String descripcionGeneral;
     private String tipoPuesto;
@@ -22,7 +22,7 @@ public class BolsaTrabajo {
 
     }
 
-    public BolsaTrabajo(String marca, String postImageUrl, String postId, String timeCreated, String educacion, String descripcionGeneral, String tipoPuesto, String sueldo, String experiencia, String habilidades, String requisitosGenerales) {
+    public BolsaTrabajo(String marca, String postImageUrl, String postId, long timeCreated, String educacion, String descripcionGeneral, String tipoPuesto, String sueldo, String experiencia, String habilidades, String requisitosGenerales) {
         this.marca = marca;
         this.postImageUrl = postImageUrl;
         this.postId = postId;
@@ -60,11 +60,11 @@ public class BolsaTrabajo {
         this.postId = postId;
     }
 
-    public String getTimeCreated() {
+    public long getTimeCreated() {
         return timeCreated;
     }
 
-    public void setTimeCreated(String timeCreated) {
+    public void setTimeCreated(long timeCreated) {
         this.timeCreated = timeCreated;
     }
 
