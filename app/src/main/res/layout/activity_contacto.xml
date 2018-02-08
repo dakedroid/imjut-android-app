@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.angel.imjut.ContactoActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/r1"
+            android:layout_margin="16dp"
+            android:background="@drawable/layout_card_acerca_de"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="6dp"
+                android:layout_margin="6dp"
+                android:textSize="24sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contacto_title"/>
+
+            <TextView
+                android:padding="6dp"
+                android:textSize="18sp"
+                android:layout_margin="6dp"
+                android:id="@+id/texto1"
+                android:layout_below="@id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/correo_contacto"/>
+
+            <TextView
+                android:padding="6dp"
+                android:textSize="18sp"
+                android:layout_margin="6dp"
+                android:id="@+id/texto2"
+                android:layout_below="@id/texto1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tel_contacto"/>
+
+            <TextView
+                android:padding="6dp"
+                android:textSize="18sp"
+                android:layout_margin="6dp"
+                android:id="@+id/texto3"
+                android:layout_below="@id/texto2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ciudad_contacto"/>
+
+            <TextView
+                android:padding="6dp"
+                android:textSize="18sp"
+                android:layout_margin="6dp"
+                android:id="@+id/texto4"
+                android:layout_below="@id/texto3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/direccion_contacto"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/r2"
+            android:layout_margin="16dp"
+            android:background="@drawable/layout_card_acerca_de"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:padding="6dp"
+                android:layout_margin="6dp"
+                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:id="@+id/titulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/direccion_imjut"/>
+
+            <TextView
+                android:padding="6dp"
+                android:textSize="18sp"
+                android:layout_margin="6dp"
+                android:id="@+id/texto2_1"
+                android:layout_below="@id/titulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/directora"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

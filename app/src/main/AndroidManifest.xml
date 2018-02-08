@@ -50,11 +50,7 @@
         </activity>
         <activity
             android:name=".HomeActivities.Galeria.GaleriaActivity"
-            android:parentActivityName=".HomeActivity"
-            android:theme="@style/SwipeBack">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.angel.imjut.HomeActivity" />
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".HomeActivities.Programas.ProgramasActivity"

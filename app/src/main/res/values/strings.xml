@@ -101,4 +101,14 @@
     <string name="educacion_empleo">Educación</string>
     <string name="habilidades_empleo">Habilidades</string>
     <string name="experiencia_empleo">Experiencia</string>
+
+
+    <!-- Contacto -->
+    <string name="contacto_title">Contacto</string>
+    <string name="correo_contacto">Correo: Imjutuxtepec@gmail.com</string>
+    <string name="tel_contacto">Tel: 044 287 128 63 68</string>
+    <string name="ciudad_contacto">Ciudad: San Juan Bautista Tuxtepec,Oaxaca,México. C.P. 68300</string>
+    <string name="direccion_contacto">Direccion: Av. 5 de Mayo S/N Entre Allende y Guerrero. Col. Centro</string>
+    <string name="direccion_imjut">Directora del Instituto Municipal de la Juventud</string>
+    <string name="directora">L.C.C Ilse Mariela Nolasco López</string>
 </resources>

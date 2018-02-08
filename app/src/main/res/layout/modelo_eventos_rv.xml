@@ -55,9 +55,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_margin="10dp"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@mipmap/ic_acerca"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/ic_info"/>
         </RelativeLayout>
 
         <RelativeLayout

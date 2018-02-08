@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.angel.imjut.AcercaDeActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:background="@drawable/layout_card_acerca_de"
+            android:id="@+id/r1"
+            android:alpha="0.9"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="6dp"
+                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titulo"/>
+
+            <TextView
+                android:layout_margin="6dp"
+                android:id="@+id/texto1"
+                android:layout_below="@id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Texto 1"/>
+
+            <TextView
+                android:layout_margin="6dp"
+                android:id="@+id/texto2"
+                android:layout_below="@id/texto1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Texto 2"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:background="@drawable/layout_card_acerca_de"
+            android:id="@+id/r2"
+            android:alpha="0.9"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_margin="6dp"
+                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:id="@+id/titulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titulo"/>
+
+            <TextView
+                android:layout_margin="6dp"
+                android:id="@+id/texto2_1"
+                android:layout_below="@id/titulo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Texto 1"/>
+
+            <TextView
+                android:layout_margin="6dp"
+                android:id="@+id/texto2_2"
+                android:layout_below="@id/texto2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Texto 2"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

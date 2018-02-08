@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -36,6 +38,7 @@ public class GaleriaActivity extends AppCompatActivity {
 
     private RecyclerView mGaleriaRV;
     private static Context context;
+    CollapsingToolbarLayout mCollapsingToolbar;
 
     public static Context getAppContext() {
         return GaleriaActivity.context;
@@ -46,7 +49,8 @@ public class GaleriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galeria);
         GaleriaActivity.context = getApplicationContext();
-        getSupportActionBar().setTitle(R.string.galeria_title);
+        mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        mCollapsingToolbar.setTitle("Galeria");
 
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(this, 3);
 
