@@ -152,6 +152,7 @@ public class ProgramasActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(final ViewHolder viewHolder, final Programa model, int position) {
+
                 viewHolder.tv_objetivos.setText(model.getObjetivos());
                 viewHolder.tituloObjetivo.setText(model.getTitulo());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {

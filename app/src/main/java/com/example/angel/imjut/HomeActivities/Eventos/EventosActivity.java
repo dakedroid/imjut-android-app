@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,13 @@ import com.example.angel.imjut.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
@@ -155,6 +163,34 @@ public class EventosActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(final EventosActivity.ViewHolder viewHolder, final Evento model, int position) {
+                FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+                assert mUser != null;
+                final String mCurrentEmail = mUser.getEmail().replace(".",",");
+                DatabaseReference mUserRecordEventos = FirebaseDatabase.getInstance().getReference()
+                        .child("user_record")
+                        .child(mCurrentEmail)
+                        .child("eventos_asistir")
+                        .child(model.getPostId());
+                mUserRecordEventos.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot != null){
+                            Log.e("TAG", "" + dataSnapshot.getValue());
+                            String asistir = dataSnapshot.getValue(String.class);
+                            if(TextUtils.equals(asistir, "true")){
+                                viewHolder.layout_asistir.setBackgroundResource(R.drawable.layout_circle_marcado);
+                            }else{
+                                viewHolder.layout_asistir.setBackgroundResource(R.drawable.layout_circle);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 viewHolder.iv_evento.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -174,6 +210,12 @@ public class EventosActivity extends AppCompatActivity {
                                 .setMessage("Se le notificara una hora antes del evento")
                                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        DatabaseReference mUserRecord = FirebaseDatabase.getInstance().getReference()
+                                                .child("user_record")
+                                                .child(mCurrentEmail)
+                                                .child("eventos_asistir")
+                                                .child(model.getPostId());
+                                        mUserRecord.setValue("true");
 
                                     }
                                 })

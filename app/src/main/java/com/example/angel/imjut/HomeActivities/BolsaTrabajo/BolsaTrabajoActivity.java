@@ -28,22 +28,26 @@ import com.squareup.picasso.Picasso;
 
 public class BolsaTrabajoActivity extends AppCompatActivity {
 
+    /*
     private RecyclerView mBolsaTrabajoRV;
-    private static Context mContext;
+    private static Context mContext;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolsa_trabajo);
-        BolsaTrabajoActivity.mContext = getApplicationContext();
+        //BolsaTrabajoActivity.mContext = getApplicationContext();
 
         getSupportActionBar().setTitle(R.string.bolsa_title);
 
+        /*
         mBolsaTrabajoRV = findViewById(R.id.bolsa_trabajo_rv);
         mBolsaTrabajoRV.setLayoutManager(new LinearLayoutManager(this));
         setupAdapter();
-
+        */
     }
+
+    /*
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -121,6 +125,7 @@ public class BolsaTrabajoActivity extends AppCompatActivity {
         mBolsaTrabajoRV.setAdapter(firebaseRecyclerAdapter);
         mBolsaTrabajoRV.setNestedScrollingEnabled(false);
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

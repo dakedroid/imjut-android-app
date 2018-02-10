@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF4081</color>
+    <color name="colorPrimary">#40cfcb</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="color">#9C27B0</color>
-    <color name="color2">#673AB7</color>
-    <color name="color3">#3F51B5</color>
-    <color name="color4">#2196F3</color>
+    <color name="color">#51abce</color>
+    <color name="color2">#467db5</color>
+    <color name="color3">#585487</color>
+    <color name="color4">#5d4171</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
     <color name="colorObjetivo">#BDBDBD</color>
     <color name="asistir">#3F51B5</color>
+    <color name="asistir_marcado">#f42828</color>
     <color name="rojo">#e01313</color>
     <color name="gris">#cfc4c4</color>
     <color name="verde">#3ce513</color>
-    <color name="toggleButtonChkd">#EC407A</color>
-    <color name="toggleButtonChkdBg">#F06292</color>
+    <color name="toggleButtonChkd">#40cfcb</color>
+    <color name="toggleButtonChkdBg">#92dddb</color>
     <color name="toggleButtonNotChkd">#757575</color>
     <color name="toggleButtonNotChkdBg">#9E9E9E</color>
 </resources>
