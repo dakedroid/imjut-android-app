@@ -87,7 +87,7 @@ public class SubirProgramaActivity extends AppCompatActivity {
         programa.setTitulo(titulo_programa);
         programa.setTimeCreated(System.currentTimeMillis());
 
-        String postImageUrl = "gs://imjut-ecdca.appspot.com/imagenes/" + folder + "/img" + programa.getUid()+ ".jpg";
+        String postImageUrl = "gs://imjut-ecdca.appspot.com/thumbs/" + folder + "_thumb/img" + programa.getUid() + "_thumb.jpg";
 
         programa.setPostImageUrl(postImageUrl);
 
