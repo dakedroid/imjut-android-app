@@ -7,8 +7,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,11 +22,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.angel.imjut.Modelos.Evento;
 import com.example.angel.imjut.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,8 +39,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 public class EventosActivity extends AppCompatActivity {
 
@@ -69,6 +68,7 @@ public class EventosActivity extends AppCompatActivity {
         ImageView iv_evento;
         TextView tv_descripcion;
         TextView tituloEvento;
+        RelativeLayout layout_titulo;
         RelativeLayout layout_asistir;
         LinearLayout layout_descripcion;
         LinearLayout descriptionCardView;
@@ -79,6 +79,7 @@ public class EventosActivity extends AppCompatActivity {
 
         public ViewHolder(View itemView) {
             super(itemView);
+            layout_titulo = itemView.findViewById(R.id.layout_titulo);
             iv_evento = itemView.findViewById(R.id.imagenEvento);
             tv_descripcion = itemView.findViewById(R.id.descripcionEvento);
             tituloEvento = itemView.findViewById(R.id.titulo_evento);
@@ -164,7 +165,6 @@ public class EventosActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(final EventosActivity.ViewHolder viewHolder, final Evento model, int position) {
                 FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-                assert mUser != null;
                 final String mCurrentEmail = mUser.getEmail().replace(".",",");
                 DatabaseReference mUserRecordEventos = FirebaseDatabase.getInstance().getReference()
                         .child("user_record")
@@ -191,7 +191,7 @@ public class EventosActivity extends AppCompatActivity {
                     }
                 });
 
-                viewHolder.iv_evento.setOnClickListener(new View.OnClickListener() {
+                viewHolder.layout_titulo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent mIntent = new Intent(EventosActivity.this, DetallesEventoActivity.class);
@@ -230,31 +230,24 @@ public class EventosActivity extends AppCompatActivity {
 
                 if(model.getPostImageUrl() != null){
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
+                    Glide.with(EventosActivity.this)
+                            .using(new FirebaseImageLoader())
+                            .load(load)
+                            .listener(new RequestListener<StorageReference, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, StorageReference model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    viewHolder.progressBar.setVisibility(View.GONE);
+                                    return false;
+                                }
 
-                    load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Picasso
-                                    .with(context)
-                                    .load(uri.toString())
-                                    .into(viewHolder.iv_evento, new Callback() {
-                                        @Override
-                                        public void onSuccess() {
-                                            viewHolder.progressBar.setVisibility(View.GONE);
-                                        }
-
-                                        @Override
-                                        public void onError() {
-
-                                        }
-                                    });
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle any errors
-                        }
-                    });
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, StorageReference model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    viewHolder.progressBar.setVisibility(View.GONE);
+                                    return false;
+                                }
+                            })
+                            .into(viewHolder.iv_evento);
+                    viewHolder.iv_evento.setVisibility(View.VISIBLE);
                 }
             }
         };

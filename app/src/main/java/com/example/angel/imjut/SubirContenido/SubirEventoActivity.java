@@ -62,6 +62,7 @@ public class SubirEventoActivity extends AppCompatActivity {
     private TimePickerFragment timePickerFragment;
     private long timeInMillisPicked;
     private long dateInMillisPicked;
+    private long dateAndTimeInMillis;
     private Calendar dateInMillis;
     private Calendar timeInMillis;
 
@@ -106,6 +107,9 @@ public class SubirEventoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validarForm()){
+                    dateInMillis.set(Calendar.HOUR_OF_DAY, timeInMillis.get(Calendar.HOUR_OF_DAY));
+                    dateInMillis.set(Calendar.MINUTE, timeInMillis.get(Calendar.MINUTE));
+                    dateAndTimeInMillis = dateInMillis.getTimeInMillis();
                     sendEvento();
                 }
             }
@@ -124,6 +128,7 @@ public class SubirEventoActivity extends AppCompatActivity {
         evento.setTitulo(titulo_evento);
         evento.setDate(dateInMillisPicked);
         evento.setHour(timeInMillisPicked);
+        evento.setTimeEnd(dateAndTimeInMillis);
         evento.setTimeCreated(System.currentTimeMillis());
 
         String postImageUrl = "gs://imjut-ecdca.appspot.com/imagenes/" + folder + "/img" + evento.getPostId()+ ".jpg";

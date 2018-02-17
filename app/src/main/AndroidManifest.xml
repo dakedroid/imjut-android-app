@@ -9,14 +9,14 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
+        tools:replace="android:supportsRtl"
         android:name=".Imjut"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/AppTheme"
-        tools:replace="android:supportsRtl">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreen"
             android:noHistory="true"
@@ -60,7 +60,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.angel.imjut.HomeActivity" />
         </activity>
-        <activity android:name=".AsistirActivity" />
         <activity
             android:name=".HomeActivities.Galeria.GaleriaDetallesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -78,6 +77,7 @@
         <activity android:name=".SubirContenido.SubirGaleriaActivity" />
         <activity android:name=".SubirContenido.SubirBolsaTrabajoActivity" />
         <activity android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoPostularse"></activity>
+        <activity android:name=".HomeActivities.Programas.AsistirActivity"></activity>
     </application>
 
 </manifest>

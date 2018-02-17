@@ -10,6 +10,7 @@ public class Evento {
     private String descripcion;
     private String postId;
     private long timeCreated;
+    private long timeEnd;
     private long date;
     private long hour;
 
@@ -18,12 +19,13 @@ public class Evento {
 
     }
 
-    public Evento(String postImageUrl, String titulo, String descripcion, String postId, long timeCreated, long date, long hour) {
+    public Evento(String postImageUrl, String titulo, String descripcion, String postId, long timeCreated, long timeEnd, long date, long hour) {
         this.postImageUrl = postImageUrl;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.postId = postId;
         this.timeCreated = timeCreated;
+        this.timeEnd = timeEnd;
         this.date = date;
         this.hour = hour;
     }
@@ -82,5 +84,13 @@ public class Evento {
 
     public void setHour(long hour) {
         this.hour = hour;
+    }
+
+    public long getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(long timeEnd) {
+        this.timeEnd = timeEnd;
     }
 }

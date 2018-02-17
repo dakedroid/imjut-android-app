@@ -5,12 +5,12 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +20,23 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.angel.imjut.AsistirActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.angel.imjut.Modelos.Programa;
 import com.example.angel.imjut.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 
 public class ProgramasActivity extends AppCompatActivity {
@@ -152,42 +158,62 @@ public class ProgramasActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(final ViewHolder viewHolder, final Programa model, int position) {
+                FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+                final String mCurrentEmail = mUser.getEmail().replace(".",",");
+                DatabaseReference mUserRecordEventos = FirebaseDatabase.getInstance().getReference()
+                        .child("user_record")
+                        .child(mCurrentEmail)
+                        .child("programas_asistir")
+                        .child(model.getUid());
+                mUserRecordEventos.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot != null){
+                            Log.e("TAG", "" + dataSnapshot.getValue());
+                            String asistir = dataSnapshot.getValue(String.class);
+                            if(TextUtils.equals(asistir, "true")){
+                                viewHolder.layout_asistir.setBackgroundResource(R.drawable.layout_circle_marcado);
+                            }else{
+                                viewHolder.layout_asistir.setBackgroundResource(R.drawable.layout_circle);
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
 
                 viewHolder.tv_objetivos.setText(model.getObjetivos());
                 viewHolder.tituloObjetivo.setText(model.getTitulo());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ProgramasActivity.this.startActivity(new Intent(ProgramasActivity.this, AsistirActivity.class));
+
+                        ProgramasActivity.this.startActivity(new Intent(ProgramasActivity.this, AsistirActivity.class).putExtra("POSTID", model.getUid()));
                     }
                 });
 
                 if(model.getPostImageUrl() != null){
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getPostImageUrl());
-                    load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Picasso
-                                    .with(context)
-                                    .load(uri.toString())
-                                    .into(viewHolder.iv_programa, new Callback() {
-                                        @Override
-                                        public void onSuccess() {
-                                            viewHolder.progressBar.setVisibility(View.GONE);
-                                        }
+                    Glide.with(ProgramasActivity.this)
+                            .using(new FirebaseImageLoader())
+                            .load(load)
+                            .listener(new RequestListener<StorageReference, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, StorageReference model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    viewHolder.progressBar.setVisibility(View.GONE);
+                                    return false;
+                                }
 
-                                        @Override
-                                        public void onError() {
-
-                                        }
-                                    });
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle any errors
-                        }
-                    });
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, StorageReference model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    viewHolder.progressBar.setVisibility(View.GONE);
+                                    return false;
+                                }
+                            })
+                            .into(viewHolder.iv_programa);
+                    viewHolder.iv_programa.setVisibility(View.VISIBLE);
                 }
             }
         };

@@ -1,21 +1,29 @@
 package com.example.angel.imjut.HomeActivities.Programas;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.angel.imjut.Modelos.User;
 import com.example.angel.imjut.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.StringTokenizer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,12 +54,22 @@ public class AsistirActivity extends AppCompatActivity {
             llenarForm();
         }
 
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String mCurrentEmail = mUser.getEmail().replace(".",",");
+        final String postId = getIntent().getStringExtra("POSTID");
+
         btn_registrarse = findViewById(R.id.registrarse_asistir);
         btn_registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validarForm()){
-                    registrarse();
+                    mandarmail();
+                    DatabaseReference mUserRecord = FirebaseDatabase.getInstance().getReference()
+                            .child("user_record")
+                            .child(mCurrentEmail)
+                            .child("programas_asistir")
+                            .child(postId);
+                    mUserRecord.setValue("true");
                 }
             }
         });
@@ -159,4 +177,33 @@ public class AsistirActivity extends AppCompatActivity {
         return valido;
     }
 
+    private void mandarmail() {
+
+        String direcciones = "sanchezangel.1609@gmail.com";
+        StringTokenizer token = new StringTokenizer(direcciones);
+        int n = token.countTokens();
+        String[] para = new String[n];
+
+        for (int i = 0; i < n; i++) para[i] = token.nextToken();
+
+        String tit = "Postulacion para trabajo";
+        String text = "Nombre: " + et_nombre.getText().toString() + " " +
+                et_apellido.getText().toString() + "\nCiudad: " +
+                et_ciudad.getText().toString() + "\nComunidad: " +
+                et_comunidad.getText().toString() + "\nCorreo: " +
+                et_correo.getText().toString() +"\nTelefono: " +
+                et_numero.getText().toString() + "\nEdad: " +
+                et_edad.getText().toString() + "\nFacebook: " +
+                et_facebook.getText().toString();
+
+        Intent email = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        if (validarForm()) {
+            email.putExtra(Intent.EXTRA_EMAIL, para);
+            email.putExtra(Intent.EXTRA_SUBJECT, tit);
+            email.putExtra(Intent.EXTRA_TEXT, text);
+            email.setType("plain/text");
+            startActivity(Intent.createChooser(email, "Enviar correo"));
+            Log.i("prueba  2", String.valueOf(Uri.parse(direcciones)));
+        } else Toast.makeText(this, "Algo salio mal....", Toast.LENGTH_LONG).show();
+    }
 }

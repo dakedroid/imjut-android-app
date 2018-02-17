@@ -12,16 +12,18 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.angel.imjut.Modelos.Foto;
 import com.example.angel.imjut.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,8 +31,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -112,31 +112,24 @@ public class GaleriaActivity extends AppCompatActivity {
 
                 if(model.getImageUrl() != null){
                     StorageReference load = FirebaseStorage.getInstance().getReferenceFromUrl(model.getImageUrl());
-                    load.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Picasso
-                                    .with(context)
-                                    .load(uri.toString())
-                                    .into(viewHolder.foto, new Callback() {
-                                        @Override
-                                        public void onSuccess() {
-                                            viewHolder.mProgressBar.setVisibility(View.GONE);
-                                            viewHolder.foto.setVisibility(View.VISIBLE);
-                                        }
+                    Glide.with(GaleriaActivity.this)
+                            .using(new FirebaseImageLoader())
+                            .load(load)
+                            .listener(new RequestListener<StorageReference, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, StorageReference model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    viewHolder.mProgressBar.setVisibility(View.GONE);
+                                    return false;
+                                }
 
-                                        @Override
-                                        public void onError() {
-
-                                        }
-                                    });
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle any errors
-                        }
-                    });
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, StorageReference model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    viewHolder.mProgressBar.setVisibility(View.GONE);
+                                    return false;
+                                }
+                            })
+                            .into(viewHolder.foto);
+                    viewHolder.foto.setVisibility(View.VISIBLE);
                 }
             }
         };
