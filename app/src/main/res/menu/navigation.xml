@@ -33,6 +33,11 @@
             android:visible="false"/>
 
         <item
+            android:id="@+id/navigation_emergencia"
+            android:icon="@mipmap/ic_emergencia"
+            android:title="@string/emergencia"/>
+
+        <item
             android:icon="@mipmap/ic_cerrar_sesion"
             android:id="@+id/navigation_item_5"
             android:title="@string/menu_cerrar_sesion"/>

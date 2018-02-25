@@ -111,4 +111,12 @@
     <string name="direccion_contacto">Direccion: Av. 5 de Mayo S/N Entre Allende y Guerrero. Col. Centro</string>
     <string name="direccion_imjut">Directora del Instituto Municipal de la Juventud</string>
     <string name="directora">L.C.C Ilse Mariela Nolasco López</string>
+
+    <string name="patrocinadores">Patrocinadores</string>
+    <string name="about">Acerca de</string>
+
+    <!-- DIVAGA -->
+    <string name="divaga">Divaga Inc.</string>
+    <string name="emergencia">Emergencias</string>
+
 </resources>
