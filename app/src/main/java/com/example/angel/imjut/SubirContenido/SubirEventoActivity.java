@@ -131,7 +131,8 @@ public class SubirEventoActivity extends AppCompatActivity {
         evento.setTimeEnd(dateAndTimeInMillis);
         evento.setTimeCreated(System.currentTimeMillis());
 
-        String postImageUrl = "gs://imjut-ecdca.appspot.com/imagenes/" + folder + "/img" + evento.getPostId()+ ".jpg";
+
+        String postImageUrl = "gs://imjut-ecdca.appspot.com/thumbs/" + folder + "_thumb/img_eventos" + evento.getPostId() + "_thumb.jpg";
 
         evento.setPostImageUrl(postImageUrl);
 
@@ -146,7 +147,7 @@ public class SubirEventoActivity extends AppCompatActivity {
 
     public void uploadFile(String UID, String folder) {
         if (filePath != null) {
-            StorageReference riversRef = FirebaseStorage.getInstance().getReference().child("imagenes/" + folder + "/img" + UID + ".jpg");
+            StorageReference riversRef = FirebaseStorage.getInstance().getReference().child("imagenes/" + folder + "/img_eventos" + UID + ".jpg");
 
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

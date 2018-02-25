@@ -83,7 +83,8 @@ public class SubirGaleriaActivity extends AppCompatActivity {
         foto.setDescripcion(descripcion);
         foto.setPostId(postId);
 
-        String postImageUrl = "gs://imjut-ecdca.appspot.com/imagenes/" + folder + "/img" + foto.getPostId()+ ".jpg";
+
+        String postImageUrl = "gs://imjut-ecdca.appspot.com/thumbs/" + folder + "_thumb/img_galeria" + foto.getPostId() + "_thumb.jpg";
         foto.setImageUrl(postImageUrl);
 
         FirebaseDatabase.getInstance().getReference("posts").child("galeria").child(postId).setValue(foto, new DatabaseReference.CompletionListener() {
@@ -116,7 +117,7 @@ public class SubirGaleriaActivity extends AppCompatActivity {
 
     public void uploadFile(String UID, String folder) {
         if (filePath != null) {
-            StorageReference riversRef = FirebaseStorage.getInstance().getReference().child("imagenes/" + folder + "/img" + UID + ".jpg");
+            StorageReference riversRef = FirebaseStorage.getInstance().getReference().child("imagenes/" + folder + "/img_galeria" + UID + ".jpg");
 
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
