@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.angel.imjut.HomeActivities.BolsaTrabajo.BolsaTrabajoActivity">
+    tools:context=".HomeActivities.BolsaTrabajo.BolsaTrabajoActivity">
     
     <TextView
         android:textSize="26sp"

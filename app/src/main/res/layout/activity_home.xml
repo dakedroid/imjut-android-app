@@ -33,7 +33,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
             <fragment
                 android:id="@+id/home_fragment"
-                android:name="com.example.angel.imjut.HomeFragment"
+                android:name="com.imjut.android.HomeFragment"
                 tools:layout="@layout/modelo_cardview_inicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

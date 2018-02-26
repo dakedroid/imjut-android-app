@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.angel.imjut.ContactoActivity">
+    tools:context="com.imjut.android.com.divaga.imjut.ContactoActivity">
 
     <LinearLayout
         android:background="@drawable/background"

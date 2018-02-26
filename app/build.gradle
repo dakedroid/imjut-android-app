@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "com.example.angel.imjut"
+        applicationId 'com.imjut.android'
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
@@ -21,6 +21,8 @@ android {
     }
     dexOptions {
         javaMaxHeapSize "4g"
+    }
+    productFlavors {
     }
 }
 

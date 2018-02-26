@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="com.example.angel.imjut.HomeActivities.Galeria.GaleriaDetallesActivity">
+    tools:context=".HomeActivities.Galeria.GaleriaDetallesActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
