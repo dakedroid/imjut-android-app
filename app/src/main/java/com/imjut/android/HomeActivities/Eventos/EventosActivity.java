@@ -26,6 +26,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.imjut.android.Modelos.Evento;
 import com.imjut.android.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -210,6 +212,7 @@ public class EventosActivity extends AppCompatActivity {
                                 .setMessage("Se le notificara una hora antes del evento")
                                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        FirebaseMessaging.getInstance().subscribeToTopic(model.getPostId());
                                         DatabaseReference mUserRecord = FirebaseDatabase.getInstance().getReference()
                                                 .child("user_record")
                                                 .child(mCurrentEmail)
@@ -221,6 +224,7 @@ public class EventosActivity extends AppCompatActivity {
                                 })
                                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+
                                     }
                                 });
                         builder.show();

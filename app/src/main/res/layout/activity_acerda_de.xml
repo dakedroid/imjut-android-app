@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.imjut.android.com.divaga.imjut.AcercaDeActivity">
+    tools:context="com.imjut.android.AcercaDeActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -50,78 +50,163 @@
                 android:text="@string/patrocinadores"/>
         </LinearLayout>
 
-        <!--
-        <GridLayout
-            android:gravity="center_horizontal"
+        <RelativeLayout
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_marginBottom="5dp"
+                    android:id="@+id/image1"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:src="@drawable/emporio"/>
+
                 <TextView
+                    android:textStyle="bold"
                     android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:text="Emporio Taco"
+                    android:layout_below="@+id/image1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Emporio Taco"/>
+                    android:layout_height="wrap_content" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_marginBottom="5dp"
+                    android:id="@+id/image2"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:src="@drawable/pinturas"/>
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pinturas de la cuenca"/>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:text="Pinturas de la cuenca"
+                    android:layout_below="@+id/image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_marginBottom="5dp"
+                    android:id="@+id/image3"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:src="@drawable/fhucup"/>
+                    android:src="@drawable/emporio"/>
+
                 <TextView
+                    android:textStyle="bold"
                     android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fhucup"/>
-            </LinearLayout>
-        </GridLayout>-->
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:text="Fhucup"
+                    android:layout_below="@+id/image3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/gridView1"
-            android:numColumns="auto_fit"
-            android:gravity="center"
-            android:columnWidth="100dp"
-            android:stretchMode="columnWidth"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            </RelativeLayout>
 
-        </GridView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image1_2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/emporio"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:text="Emporio Taco"
+                    android:layout_below="@+id/image1_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image2_2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/pinturas"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:text="Pinturas de la cuenca"
+                    android:layout_below="@+id/image2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image3_2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/emporio"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:text="Fhucup"
+                    android:layout_below="@+id/image3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:background="@color/color"

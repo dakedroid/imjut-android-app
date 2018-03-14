@@ -11,18 +11,28 @@ public class User {
     private String email;
     private String uid;
     private boolean permisos_admin;
+    private boolean noti_activadas;
 
     public User(){
 
     }
 
-    public User(String name, String apellido, String edad, String email, String uid, boolean permisos_admin) {
+    public User(String name, String apellido, String edad, String email, String uid, boolean permisos_admin, boolean noti_activadas) {
         this.name = name;
         this.apellido = apellido;
         this.edad = edad;
         this.email = email;
         this.uid = uid;
         this.permisos_admin = permisos_admin;
+        this.noti_activadas = noti_activadas;
+    }
+
+    public boolean isNoti_activadas() {
+        return noti_activadas;
+    }
+
+    public void setNoti_activadas(boolean noti_activadas) {
+        this.noti_activadas = noti_activadas;
     }
 
     public String getName() {

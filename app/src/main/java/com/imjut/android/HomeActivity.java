@@ -9,28 +9,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
 import com.imjut.android.Modelos.User;
 import com.imjut.android.SubirContenido.PanelSubirContenido;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.rm.rmswitch.RMSwitch;
 
 public class HomeActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mUserRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,10 +74,15 @@ public class HomeActivity extends AppCompatActivity {
         navigation.inflateHeaderView(R.layout.design_navigation);
 
         final String mCurrentEmailUser = mAuth.getCurrentUser().getEmail().replace(".",",");
-        Query mQuery = FirebaseDatabase.getInstance().getReference()
+        Menu menuView = navigation.getMenu();
+        MenuItem menuItem = menuView.getItem(0);
+        final RMSwitch mToggleButton = menuItem.getActionView().findViewById(R.id.mRMSwitch);
+
+        mUserRef = FirebaseDatabase.getInstance().getReference()
                 .child("users")
                 .child(mCurrentEmailUser);
-        mQuery.addValueEventListener(new ValueEventListener() {
+
+        mUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User mCurrentUser = dataSnapshot.getValue(User.class);
@@ -84,12 +94,31 @@ public class HomeActivity extends AppCompatActivity {
                 }else{
                     navigation.getMenu().findItem(R.id.navigation_item_subir).setVisible(false);
                 }
+
+                boolean notiActivated = mCurrentUser.isNoti_activadas();
+                if(notiActivated){
+                    mToggleButton.setChecked(true);
+                }else{
+                    mToggleButton.setChecked(false);
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        mToggleButton.addSwitchObserver(new RMSwitch.RMSwitchObserver() {
+            @Override
+            public void onCheckStateChange(RMSwitch switchView, boolean isChecked) {
+                if(isChecked){
+                    mUserRef.child("noti_activadas").setValue(true);
+                }else{
+                    mUserRef.child("noti_activadas").setValue(false);
+                }
+            }
+        });
+
     }
 
     @Override

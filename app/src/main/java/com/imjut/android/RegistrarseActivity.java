@@ -73,7 +73,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 FirebaseUser mUser = mAuth.getCurrentUser();
                                 String uid = mUser.getUid();
-                                saveUserToDatabase(nombre,email,uid,apellidos,edad, false);
+                                saveUserToDatabase(nombre,email,uid,apellidos,edad, false, true);
                             }else{
                                 Toast.makeText(RegistrarseActivity.this, R.string.error_registro, Toast.LENGTH_SHORT).show();
                             }
@@ -157,8 +157,8 @@ public class RegistrarseActivity extends AppCompatActivity {
         return valido;
     }
 
-    private void saveUserToDatabase(String name, String email, String uid, String apellidos, String edad, boolean permisos){
-        User user = new User(name,apellidos,edad,email,uid, permisos);
+    private void saveUserToDatabase(String name, String email, String uid, String apellidos, String edad, boolean permisos, boolean isNotiActivated){
+        User user = new User(name,apellidos,edad,email,uid, permisos, isNotiActivated);
         mUserRef = FirebaseDatabase.getInstance().getReference();
         mUserRef.child("users")
                 .child(email.replace(".",","))

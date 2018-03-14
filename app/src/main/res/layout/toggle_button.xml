@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.rm.rmswitch.RMSwitch
-        android:id="@+id/your_id"
+        android:id="@+id/mRMSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
