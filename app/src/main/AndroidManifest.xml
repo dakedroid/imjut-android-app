@@ -9,23 +9,21 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        tools:replace="android:supportsRtl"
-        android:name="com.imjut.android.Imjut"
+        android:name=".Imjut"
         android:allowBackup="true"
         android:icon="@mipmap/imjut"
         android:label="@string/app_name"
         android:supportsRtl="false"
-        android:theme="@style/AppTheme">
-
-        <service
-            android:name=".MyFirebaseMessaggingService">
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
+        <service android:name=".MyFirebaseMessaggingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name="com.imjut.android.SplashScreen"
+            android:name=".SplashScreen"
             android:noHistory="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -35,56 +33,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.imjut.android.HomeActivity"
+            android:name=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.imjut.android.RegistrarseActivity" />
-        <activity android:name="com.imjut.android.LoginActivity" />
+        <activity android:name=".RegistrarseActivity" />
+        <activity android:name=".LoginActivity" />
         <activity
-            android:name="com.imjut.android.HomeActivities.Eventos.EventosActivity"
-            android:parentActivityName="com.imjut.android.HomeActivity"
+            android:name=".HomeActivities.Eventos.EventosActivity"
+            android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.imjut.android.HomeActivity" />
         </activity>
         <activity
-            android:name="com.imjut.android.HomeActivities.BolsaTrabajo.BolsaTrabajoActivity"
-            android:parentActivityName="com.imjut.android.HomeActivity"
+            android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoActivity"
+            android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.imjut.android.HomeActivity" />
         </activity>
         <activity
-            android:name="com.imjut.android.HomeActivities.Galeria.GaleriaActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:name=".HomeActivities.Galeria.GaleriaActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.imjut.android.HomeActivities.Programas.ProgramasActivity"
-            android:parentActivityName="com.imjut.android.HomeActivity"
+            android:name=".HomeActivities.Programas.ProgramasActivity"
+            android:parentActivityName=".HomeActivity"
             android:theme="@style/SwipeBack">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.imjut.android.HomeActivity" />
         </activity>
         <activity
-            android:name="com.imjut.android.HomeActivities.Galeria.GaleriaDetallesActivity"
+            android:name=".HomeActivities.Galeria.GaleriaDetallesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.imjut.android.HomeActivities.Eventos.DetallesEventoActivity"
+            android:name=".HomeActivities.DetallesImagenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.imjut.android.HomeActivities.BolsaTrabajo.BolsaTrabajoDetalles"
+            android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoDetalles"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.imjut.android.ContactoActivity" />
-        <activity android:name="com.imjut.android.AcercaDeActivity" />
-        <activity android:name="com.imjut.android.SubirContenido.PanelSubirContenido" />
-        <activity android:name="com.imjut.android.SubirContenido.SubirProgramaActivity" />
-        <activity android:name="com.imjut.android.SubirContenido.SubirEventoActivity" />
-        <activity android:name="com.imjut.android.SubirContenido.SubirGaleriaActivity" />
-        <activity android:name="com.imjut.android.SubirContenido.SubirBolsaTrabajoActivity" />
-        <activity android:name="com.imjut.android.HomeActivities.BolsaTrabajo.BolsaTrabajoPostularse"></activity>
-        <activity android:name="com.imjut.android.HomeActivities.Programas.AsistirActivity"></activity>
+        <activity android:name=".ContactoActivity" />
+        <activity android:name=".AcercaDeActivity" />
+        <activity android:name=".SubirContenido.PanelSubirContenido" />
+        <activity android:name=".SubirContenido.SubirProgramaActivity" />
+        <activity android:name=".SubirContenido.SubirEventoActivity" />
+        <activity android:name=".SubirContenido.SubirGaleriaActivity" />
+        <activity android:name=".SubirContenido.SubirBolsaTrabajoActivity" />
+        <activity android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoPostularse" />
+        <activity android:name=".HomeActivities.Programas.AsistirActivity" />
+        <activity android:name=".EmergenciaActivity"></activity>
     </application>
 
 </manifest>

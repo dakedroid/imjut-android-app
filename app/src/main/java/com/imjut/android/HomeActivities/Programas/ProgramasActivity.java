@@ -24,6 +24,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.imjut.android.HomeActivities.DetallesImagenActivity;
+import com.imjut.android.HomeActivities.Eventos.EventosActivity;
 import com.imjut.android.Modelos.Programa;
 import com.imjut.android.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -67,6 +69,7 @@ public class ProgramasActivity extends AppCompatActivity {
         TextView tv_objetivos;
         TextView tituloObjetivo;
         RelativeLayout layout_asistir;
+        RelativeLayout layout_titulo;
         LinearLayout layout_objetivos;
         LinearLayout descriptionCardView;
         private int descriptionViewFullHeight;
@@ -83,6 +86,7 @@ public class ProgramasActivity extends AppCompatActivity {
             layout_asistir.setBackgroundResource(R.drawable.layout_circle);
             descriptionCardView = itemView.findViewById(R.id.cardViewProgramas);
             progressBar = itemView.findViewById(R.id.progress_bar);
+            layout_titulo = itemView.findViewById(R.id.layout_titulo);
 
             int height = (int) getAppContext().getResources().getDimension(R.dimen.card_size_prueba);
             ViewGroup.LayoutParams layoutParams = descriptionCardView.getLayoutParams();
@@ -183,6 +187,14 @@ public class ProgramasActivity extends AppCompatActivity {
                     }
                 });
 
+                viewHolder.layout_titulo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mIntent = new Intent(ProgramasActivity.this, DetallesImagenActivity.class);
+                        mIntent.putExtra("postImageUrl", model.getPostImageUrl());
+                        ProgramasActivity.this.startActivity(mIntent);
+                    }
+                });
 
                 viewHolder.tv_objetivos.setText(model.getObjetivos());
                 viewHolder.tituloObjetivo.setText(model.getTitulo());

@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,7 +29,7 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
+import com.imjut.android.HomeActivities.DetallesImagenActivity;
 import com.imjut.android.Modelos.Evento;
 import com.imjut.android.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -41,6 +43,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.Calendar;
 
 public class EventosActivity extends AppCompatActivity {
 
@@ -76,11 +80,13 @@ public class EventosActivity extends AppCompatActivity {
         LinearLayout descriptionCardView;
         private int descriptionViewFullHeight;
         private int descriptionViewMinHeight;
+        TextView tv_fecha;
         ImageView info;
         int mode = 0;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            tv_fecha = itemView.findViewById(R.id.fecha);
             layout_titulo = itemView.findViewById(R.id.layout_titulo);
             iv_evento = itemView.findViewById(R.id.imagenEvento);
             tv_descripcion = itemView.findViewById(R.id.descripcionEvento);
@@ -90,14 +96,8 @@ public class EventosActivity extends AppCompatActivity {
             descriptionCardView = itemView.findViewById(R.id.cardViewEventos);
             progressBar = itemView.findViewById(R.id.progress_bar);
 
-            int height = (int) getAppContext().getResources().getDimension(R.dimen.card_size_prueba);
-            ViewGroup.LayoutParams layoutParams = descriptionCardView.getLayoutParams();
-            layoutParams.height = height;
-            descriptionCardView.setLayoutParams(layoutParams);
-
             layout_descripcion = itemView.findViewById(R.id.layout_descripcion);
             layout_descripcion.setBackgroundResource(R.drawable.layout_circle_objetivo);
-
 
             info = itemView.findViewById(R.id.info);
             info.setOnClickListener(new View.OnClickListener() {
@@ -109,11 +109,17 @@ public class EventosActivity extends AppCompatActivity {
         }
 
         private void toggleProductDescriptionHeight() {
+
+
+            Log.i("Dimensiones", String.valueOf(descriptionCardView.getHeight()));
+            Log.i("Dimensiones", String.valueOf(layout_descripcion.getMeasuredHeight()));
+            //Log.i("Dimensiones", String.valueOf((int) getAppContext().getResources().getDimension(R.dimen.card_expand_places)));
             descriptionViewFullHeight = descriptionCardView.getHeight() + (int) getAppContext().getResources().getDimension(R.dimen.card_expand_places);
             descriptionViewMinHeight = descriptionCardView.getHeight();
 
             if (descriptionCardView.getHeight() == descriptionViewMinHeight && mode == 0) {
                 // expand
+                tv_fecha.setVisibility(View.VISIBLE);
                 ValueAnimator anim = ValueAnimator.ofInt(descriptionCardView.getMeasuredHeightAndState(), descriptionViewFullHeight);
                 anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
@@ -131,6 +137,7 @@ public class EventosActivity extends AppCompatActivity {
 
             } else {
                 // collapse
+                tv_fecha.setVisibility(View.INVISIBLE);
                 descriptionViewMinHeight = (int) getAppContext().getResources().getDimension(R.dimen.card_size_prueba);
                 ValueAnimator anim = ValueAnimator.ofInt(descriptionCardView.getMeasuredHeightAndState(),
                         descriptionViewMinHeight);
@@ -193,10 +200,51 @@ public class EventosActivity extends AppCompatActivity {
                     }
                 });
 
+                String mFecha = "";
+
+                Calendar mTimeEnd = Calendar.getInstance();
+                mTimeEnd.setTimeInMillis(model.getTimeEnd());
+
+                int año = mTimeEnd.get(Calendar.YEAR);
+                int mes = mTimeEnd.get(Calendar.MONTH);
+                int dia = mTimeEnd.get(Calendar.DAY_OF_MONTH);
+                int hora = mTimeEnd.get(Calendar.HOUR_OF_DAY);
+                int minutos = mTimeEnd.get(Calendar.MINUTE);
+
+                String añoS = String.valueOf(año);
+                String mesS = String.valueOf(mes+1);
+                String diaS = String.valueOf(dia);
+                String horaS = String.valueOf(hora);
+                String minutosS = String.valueOf(minutos);
+
+
+                if((mes+1) < 10){
+                    mesS = "0"+(mes+1);
+                }
+                if(dia < 10){
+                    diaS = "0"+dia;
+                }
+
+                if(hora < 10){
+                    horaS = "0"+hora;
+                }
+                if(minutos < 10){
+                    minutosS = "0"+minutos;
+                }
+
+
+
+                Log.i("Fecha", String.valueOf(año) + String.valueOf(mes) + String.valueOf(dia) +
+                String.valueOf(hora) + String.valueOf(minutos));
+
+                mFecha = diaS + "/" + mesS + "/" + añoS + " " + horaS + ":" + minutosS;
+
+                viewHolder.tv_fecha.setText(mFecha);
+
                 viewHolder.layout_titulo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mIntent = new Intent(EventosActivity.this, DetallesEventoActivity.class);
+                        Intent mIntent = new Intent(EventosActivity.this, DetallesImagenActivity.class);
                         mIntent.putExtra("postImageUrl", model.getPostImageUrl());
                         EventosActivity.this.startActivity(mIntent);
                     }

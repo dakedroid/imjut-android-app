@@ -37,6 +37,9 @@
 
     <!-- Eventos -->
     <string name="eventos">Eventos</string>
+    <string name="asistir">Asistir</string>
+    <string name="titulo_evento">Titulo</string>
+    <string name="descripcion_evento">Descripcion</string>
 
     <!-- Bolsa de Trabajo -->
     <string name="bolsa"> Bolsa de trabajo</string>

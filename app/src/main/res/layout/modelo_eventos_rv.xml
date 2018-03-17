@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="115dp"
     android:id="@+id/cardViewEventos"
     android:layout_marginTop="5dp"
     android:orientation="vertical">
@@ -36,18 +36,19 @@
                 android:layout_centerInParent="true"
                 android:visibility="visible"/>
 
-            <!--
             <TextView
-                android:padding="8dp"
-                android:id="@+id/tv_titulo"
-                android:layout_centerInParent="true"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:background="@drawable/layout_fecha"
+                android:padding="5dp"
+                android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Programa"/>
-               -->
+                android:text="Fecha"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"/>
 
             <ImageView
                 android:id="@+id/info"
@@ -64,7 +65,8 @@
             android:id="@+id/layout_asistir"
             android:layout_width="100dp"
             android:layout_height="115dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp">
             <TextView
                 android:textSize="20sp"
                 android:textColor="@color/white"
@@ -73,11 +75,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Asistir" />
+                android:text="@string/asistir" />
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:padding="5dp"
         android:id="@+id/layout_descripcion"
         android:layout_width="match_parent"
         android:layout_height="95dp"
@@ -85,13 +88,13 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/titulo_evento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Titulo"
+            android:text="@string/titulo_evento"
             android:textColor="@color/black"
             android:textStyle="italic" />
 
@@ -99,7 +102,7 @@
             android:id="@+id/descripcionEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Objetivos"
+            android:text="@string/descripcion_evento"
             android:textColor="@color/black"
             android:textStyle="italic" />
     </LinearLayout>
