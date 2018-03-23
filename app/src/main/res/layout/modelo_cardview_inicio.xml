@@ -12,12 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/image_categoria"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_bolsa_trabajo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:tint="@color/white"/>
+
         <TextView
+            android:layout_below="@+id/image_categoria"
             android:id="@+id/tv_titulo"
             android:gravity="center_vertical"
             android:textStyle="bold"
             android:textColor="#FFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

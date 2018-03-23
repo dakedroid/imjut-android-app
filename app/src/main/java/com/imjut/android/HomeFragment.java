@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -56,26 +59,35 @@ public class HomeFragment extends Fragment{
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView tv_titulo;
+        public ImageView iv_picture;
         public LinearLayout layout;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.modelo_cardview_inicio, parent, false));
             tv_titulo = itemView.findViewById(R.id.tv_titulo);
             layout = itemView.findViewById(R.id.cardView);
+            iv_picture = itemView.findViewById(R.id.image_categoria);
         }
 
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         private static final int LENGTH = 4;
-        private final String[] mPlaces;
+        private final String[] mTitles;
+        private final Drawable[] mPictures;
         private Resources resources;
         private Context mContext;
         private Activity mActivity;
 
         public ContentAdapter(Context context, Activity activity) {
             resources = context.getResources();
-            mPlaces = resources.getStringArray(R.array.titulos_carta);
+            mTitles = resources.getStringArray(R.array.titulos_carta);
+            TypedArray a = resources.obtainTypedArray(R.array.category_pictures);
+            mPictures = new Drawable[a.length()];
+            for (int i = 0; i < mPictures.length; i++) {
+                mPictures[i] = a.getDrawable(i);
+            }
+            a.recycle();
             mContext = context;
             mActivity = activity;
         }
@@ -87,7 +99,10 @@ public class HomeFragment extends Fragment{
         @TargetApi(Build.VERSION_CODES.HONEYCOMB)
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            holder.tv_titulo.setText(mPlaces[position % mPlaces.length]);
+            holder.tv_titulo.setText(mTitles[position % mTitles.length]);
+            holder.iv_picture.setImageDrawable(mPictures[position % mPictures.length]);
+            holder.iv_picture.setAlpha((float) 0.9);
+
 
             switch (position){
                 case 0:

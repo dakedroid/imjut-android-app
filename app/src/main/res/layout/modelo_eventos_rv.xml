@@ -40,31 +40,6 @@
                     android:id="@+id/progress_bar"
                     android:layout_centerInParent="true"
                     android:visibility="visible"/>
-
-                <!--
-                                <TextView
-                                    android:padding="8dp"
-                                    android:id="@+id/tv_titulo"
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="24sp"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold"
-                                    android:text="Programa"/>
-
-
-                <ImageView
-                    android:id="@+id/info"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_margin="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/ic_info"/> -->
-
-
             </RelativeLayout>
 
             <LinearLayout
@@ -72,30 +47,26 @@
                 android:layout_marginLeft="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Avenida 5 de Mayo, cerca de Hidalgo"
                     android:textAppearance="@android:style/TextAppearance.Widget.TextView" />
-
                 <TextView
+                    android:id="@+id/descripcionEvento"
                     style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color"
                     android:text="Jueves de cervezas al 2x1 te invitamos a que asistas, precios inigualables"
                     android:textAppearance="@android:style/TextAppearance.Widget.TextView" />
-
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_marginTop="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <TextView
+                        android:id="@+id/fecha"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="08:00"/>
@@ -105,14 +76,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20 Marzo 2018" />
-
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
 
         <RelativeLayout
             android:id="@+id/layout_asistir"
@@ -131,6 +97,4 @@
                 android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
-
-
 </android.support.v7.widget.CardView>

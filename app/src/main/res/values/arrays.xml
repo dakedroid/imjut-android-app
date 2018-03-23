@@ -17,4 +17,11 @@
         <item>@mipmap/ic_bolsa_trabajo</item>
         <item>@mipmap/ic_galeria</item>
     </array>
+
+    <array name="category_pictures">
+        <item>@drawable/programas</item>
+        <item>@drawable/eventos</item>
+        <item>@drawable/bolsa_trabajo</item>
+        <item>@drawable/galeria</item>
+    </array>
 </resources>

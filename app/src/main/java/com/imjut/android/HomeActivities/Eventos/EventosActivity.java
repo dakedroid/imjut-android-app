@@ -73,16 +73,11 @@ public class EventosActivity extends AppCompatActivity {
         ProgressBar progressBar;
         ImageView iv_evento;
         TextView tv_descripcion;
-        TextView tituloEvento;
+        //TextView tituloEvento;
         RelativeLayout layout_titulo;
         RelativeLayout layout_asistir;
-        LinearLayout layout_descripcion;
-        LinearLayout descriptionCardView;
-        private int descriptionViewFullHeight;
-        private int descriptionViewMinHeight;
+        CardView descriptionCardView;
         TextView tv_fecha;
-        ImageView info;
-        int mode = 0;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -90,77 +85,10 @@ public class EventosActivity extends AppCompatActivity {
             layout_titulo = itemView.findViewById(R.id.layout_titulo);
             iv_evento = itemView.findViewById(R.id.imagenEvento);
             tv_descripcion = itemView.findViewById(R.id.descripcionEvento);
-            tituloEvento = itemView.findViewById(R.id.titulo_evento);
             layout_asistir = itemView.findViewById(R.id.layout_asistir);
             layout_asistir.setBackgroundResource(R.drawable.layout_circle);
             descriptionCardView = itemView.findViewById(R.id.cardViewEventos);
             progressBar = itemView.findViewById(R.id.progress_bar);
-
-            layout_descripcion = itemView.findViewById(R.id.layout_descripcion);
-            layout_descripcion.setBackgroundResource(R.drawable.layout_circle_objetivo);
-
-            info = itemView.findViewById(R.id.info);
-            info.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toggleProductDescriptionHeight();
-                }
-            });
-        }
-
-        private void toggleProductDescriptionHeight() {
-
-
-            Log.i("Dimensiones", String.valueOf(descriptionCardView.getHeight()));
-            Log.i("Dimensiones", String.valueOf(layout_descripcion.getMeasuredHeight()));
-            //Log.i("Dimensiones", String.valueOf((int) getAppContext().getResources().getDimension(R.dimen.card_expand_places)));
-            descriptionViewFullHeight = descriptionCardView.getHeight() + (int) getAppContext().getResources().getDimension(R.dimen.card_expand_places);
-            descriptionViewMinHeight = descriptionCardView.getHeight();
-
-            if (descriptionCardView.getHeight() == descriptionViewMinHeight && mode == 0) {
-                // expand
-                tv_fecha.setVisibility(View.VISIBLE);
-                ValueAnimator anim = ValueAnimator.ofInt(descriptionCardView.getMeasuredHeightAndState(), descriptionViewFullHeight);
-                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        int val = (Integer) valueAnimator.getAnimatedValue();
-                        ViewGroup.LayoutParams layoutParams = descriptionCardView.getLayoutParams();
-                        layoutParams.height = val;
-                        descriptionCardView.setLayoutParams(layoutParams);
-
-                        mode = 1;
-                    }
-                });
-                anim.start();
-                layout_descripcion.setVisibility(View.VISIBLE);
-
-            } else {
-                // collapse
-                tv_fecha.setVisibility(View.INVISIBLE);
-                descriptionViewMinHeight = (int) getAppContext().getResources().getDimension(R.dimen.card_size_prueba);
-                ValueAnimator anim = ValueAnimator.ofInt(descriptionCardView.getMeasuredHeightAndState(),
-                        descriptionViewMinHeight);
-                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        int val = (Integer) valueAnimator.getAnimatedValue();
-                        ViewGroup.LayoutParams layoutParams = descriptionCardView.getLayoutParams();
-                        layoutParams.height = val;
-                        descriptionCardView.setLayoutParams(layoutParams);
-
-                        mode = 0;
-                    }
-                });
-                anim.start();
-                anim.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        layout_descripcion.setVisibility(View.INVISIBLE);
-                    }
-                });
-            }
         }
     }
 
@@ -249,7 +177,7 @@ public class EventosActivity extends AppCompatActivity {
                         EventosActivity.this.startActivity(mIntent);
                     }
                 });
-                viewHolder.tituloEvento.setText(model.getTitulo());
+                //viewHolder.tituloEvento.setText(model.getTitulo());
                 viewHolder.tv_descripcion.setText(model.getDescripcion());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {
                     @Override
