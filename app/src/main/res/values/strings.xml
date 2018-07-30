@@ -92,6 +92,7 @@
     <string name="subir_galeria">Subir foto a la galería</string>
     <string name="subir_titulo_evento">Nombre del evento</string>
     <string name="subir_descripcion_evento">Descripcion del evento</string>
+    <string name="subir_direccion_evento">Dirección</string>
     <string name="elige_fecha">Elige la fecha</string>
     <string name="elige_hora">Elige la hora</string>
     <string name="subir_foto">Examinar</string>
@@ -117,6 +118,12 @@
 
     <string name="patrocinadores">Patrocinadores</string>
     <string name="about">Acerca de</string>
+
+    <!-- EVENTOS -->
+    <string name="direccion_eventos">Av. 5 de mayo</string>
+    <string name="descripcion_eventos">Jueves de cervezas al 2x1 te invitamos a que asistas, precios inigualables</string>
+    <string name="hora_eventos">8:00</string>
+    <string name="fecha_eventos">20 de marzo 2018</string>
 
     <!-- DIVAGA -->
     <string name="divaga">Divaga Inc.</string>

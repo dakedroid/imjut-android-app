@@ -1,33 +1,53 @@
 package com.imjut.android.HomeActivities.BolsaTrabajo;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.imjut.android.Modelos.BolsaTrabajo;
 import com.imjut.android.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 public class BolsaTrabajoActivity extends AppCompatActivity {
 
-    /*
+
     private RecyclerView mBolsaTrabajoRV;
-    private static Context mContext;*/
+    private static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolsa_trabajo);
-        //BolsaTrabajoActivity.mContext = getApplicationContext();
+        BolsaTrabajoActivity.mContext = getApplicationContext();
 
         getSupportActionBar().setTitle(R.string.bolsa_title);
 
-        /*
+
         mBolsaTrabajoRV = findViewById(R.id.bolsa_trabajo_rv);
         mBolsaTrabajoRV.setLayoutManager(new LinearLayoutManager(this));
         setupAdapter();
-        */
+
     }
 
-    /*
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -46,7 +66,7 @@ public class BolsaTrabajoActivity extends AppCompatActivity {
     }
 
     private void setupAdapter(){
-        FirebaseRecyclerAdapter<BolsaTrabajo, BolsaTrabajoActivity.ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BolsaTrabajo, BolsaTrabajoActivity.ViewHolder>(
+        FirebaseRecyclerAdapter<BolsaTrabajo, ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BolsaTrabajo, BolsaTrabajoActivity.ViewHolder>(
                 BolsaTrabajo.class,
                 R.layout.modelo_bolsa_trabajo,
                 BolsaTrabajoActivity.ViewHolder.class,
@@ -105,7 +125,7 @@ public class BolsaTrabajoActivity extends AppCompatActivity {
         mBolsaTrabajoRV.setAdapter(firebaseRecyclerAdapter);
         mBolsaTrabajoRV.setNestedScrollingEnabled(false);
     }
-    */
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

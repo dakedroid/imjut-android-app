@@ -52,6 +52,7 @@ public class SubirEventoActivity extends AppCompatActivity {
     @BindView(R.id.descripcion_subir_evento) EditText mDescripcionEvento;
     @BindView(R.id.fecha_subir_evento) EditText mFechaEvento;
     @BindView(R.id.hora_subir_evento) EditText mHoraEvento;
+    @BindView(R.id.direccion_subir_evento) EditText mDireccionEvento;
     private ImageView mImagePicker;
     private TextView mFilePath;
     private ImageView mImagePreview;
@@ -121,11 +122,13 @@ public class SubirEventoActivity extends AppCompatActivity {
         String folder = "eventos";
         String titulo_evento = mTituloEvento.getText().toString();
         String descripcion_evento = mDescripcionEvento.getText().toString();
+        String direccion_evento = mDireccionEvento.getText().toString();
         String postId = getUid();
 
         evento.setPostId(postId);
         evento.setDescripcion(descripcion_evento);
         evento.setTitulo(titulo_evento);
+        evento.setDireccion(direccion_evento);
         evento.setDate(dateInMillisPicked);
         evento.setHour(timeInMillisPicked);
         evento.setTimeEnd(dateAndTimeInMillis);
@@ -187,6 +190,7 @@ public class SubirEventoActivity extends AppCompatActivity {
 
         String tituloEvento = mTituloEvento.getText().toString();
         String descripcionEvento = mDescripcionEvento.getText().toString();
+        String direccionEvento = mDireccionEvento.getText().toString();
 
         if(!datePicked){
             mFechaEvento.setError("Elige una fecha");
@@ -214,6 +218,13 @@ public class SubirEventoActivity extends AppCompatActivity {
             mDescripcionEvento.setError("Introduzca una descripcion");
         }else{
             mDescripcionEvento.setError(null);
+        }
+
+        if(TextUtils.isEmpty(direccionEvento)){
+            valido = false;
+            mDireccionEvento.setError("Introduzca una dirección");
+        }else{
+            mDireccionEvento.setError(null);
         }
 
         if(!mImagePicked){

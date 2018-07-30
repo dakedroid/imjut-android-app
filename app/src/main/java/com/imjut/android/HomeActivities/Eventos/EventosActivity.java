@@ -73,7 +73,7 @@ public class EventosActivity extends AppCompatActivity {
         ProgressBar progressBar;
         ImageView iv_evento;
         TextView tv_descripcion;
-        //TextView tituloEvento;
+        TextView direccionEvento;
         RelativeLayout layout_titulo;
         RelativeLayout layout_asistir;
         CardView descriptionCardView;
@@ -81,6 +81,7 @@ public class EventosActivity extends AppCompatActivity {
 
         public ViewHolder(View itemView) {
             super(itemView);
+            direccionEvento = itemView.findViewById(R.id.direaccionEvento);
             tv_fecha = itemView.findViewById(R.id.fecha);
             layout_titulo = itemView.findViewById(R.id.layout_titulo);
             iv_evento = itemView.findViewById(R.id.imagenEvento);
@@ -177,7 +178,7 @@ public class EventosActivity extends AppCompatActivity {
                         EventosActivity.this.startActivity(mIntent);
                     }
                 });
-                //viewHolder.tituloEvento.setText(model.getTitulo());
+                viewHolder.direccionEvento.setText(model.getDireccion());
                 viewHolder.tv_descripcion.setText(model.getDescripcion());
                 viewHolder.layout_asistir.setOnClickListener(new View.OnClickListener() {
                     @Override

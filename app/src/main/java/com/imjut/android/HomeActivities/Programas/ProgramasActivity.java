@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -71,7 +72,7 @@ public class ProgramasActivity extends AppCompatActivity {
         RelativeLayout layout_asistir;
         RelativeLayout layout_titulo;
         LinearLayout layout_objetivos;
-        LinearLayout descriptionCardView;
+        CardView descriptionCardView;
         private int descriptionViewFullHeight;
         private int descriptionViewMinHeight;
         ImageView info;
@@ -81,31 +82,25 @@ public class ProgramasActivity extends AppCompatActivity {
             super(itemView);
             iv_programa = itemView.findViewById(R.id.imagenPrograma);
             tv_objetivos = itemView.findViewById(R.id.objetivos);
-            tituloObjetivo = itemView.findViewById(R.id.Titulo_objetivos);
+            tituloObjetivo = itemView.findViewById(R.id.nombre_programa);
             layout_asistir = itemView.findViewById(R.id.layout_asistir);
-            layout_asistir.setBackgroundResource(R.drawable.layout_circle);
             descriptionCardView = itemView.findViewById(R.id.cardViewProgramas);
             progressBar = itemView.findViewById(R.id.progress_bar);
             layout_titulo = itemView.findViewById(R.id.layout_titulo);
 
-            int height = (int) getAppContext().getResources().getDimension(R.dimen.card_size_prueba);
-            ViewGroup.LayoutParams layoutParams = descriptionCardView.getLayoutParams();
-            layoutParams.height = height;
-            descriptionCardView.setLayoutParams(layoutParams);
+            //layout_objetivos = itemView.findViewById(R.id.layout_objetivos);
+            //layout_objetivos.setBackgroundResource(R.drawable.layout_circle_objetivo);
 
-            layout_objetivos = itemView.findViewById(R.id.layout_objetivos);
-            layout_objetivos.setBackgroundResource(R.drawable.layout_circle_objetivo);
-
-            info = itemView.findViewById(R.id.info);
+            /*info = itemView.findViewById(R.id.info);
             info.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     toggleProductDescriptionHeight();
                 }
-            });
+            });*/
         }
 
-        private void toggleProductDescriptionHeight() {
+        /*private void toggleProductDescriptionHeight() {
             descriptionViewFullHeight = descriptionCardView.getHeight() + (int) getAppContext().getResources().getDimension(R.dimen.card_expand_places);
             descriptionViewMinHeight = descriptionCardView.getHeight();
 
@@ -150,7 +145,7 @@ public class ProgramasActivity extends AppCompatActivity {
                     }
                 });
             }
-        }
+        }*/
     }
 
     private void setupAdapter(){
