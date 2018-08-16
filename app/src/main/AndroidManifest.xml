@@ -55,7 +55,7 @@
         </activity>
         <activity
             android:name=".HomeActivities.Galeria.GaleriaActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivities.Programas.ProgramasActivity"
             android:parentActivityName=".HomeActivity"
@@ -82,7 +82,8 @@
         <activity android:name=".SubirContenido.SubirBolsaTrabajoActivity" />
         <activity android:name=".HomeActivities.BolsaTrabajo.BolsaTrabajoPostularse" />
         <activity android:name=".HomeActivities.Programas.AsistirActivity" />
-        <activity android:name=".EmergenciaActivity"></activity>
+        <activity android:name=".EmergenciaActivity" />
+        <activity android:name=".SubirContenido.MandarNotificacion"></activity>
     </application>
 
 </manifest>

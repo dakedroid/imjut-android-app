@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.imjut.android.Modelos.User;
 import com.imjut.android.SubirContenido.PanelSubirContenido;
 import com.google.firebase.auth.FirebaseAuth;
@@ -98,8 +99,10 @@ public class HomeActivity extends AppCompatActivity {
                 boolean notiActivated = mCurrentUser.isNoti_activadas();
                 if(notiActivated){
                     mToggleButton.setChecked(true);
+                    FirebaseMessaging.getInstance().subscribeToTopic("imjut");
                 }else{
                     mToggleButton.setChecked(false);
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("imjut");
                 }
             }
 

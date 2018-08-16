@@ -42,45 +42,52 @@
                     android:visibility="visible"/>
             </RelativeLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginLeft="6dp"
-                android:layout_marginStart="6dp"
+            <ScrollView
+                android:id="@+id/scrollview_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/direaccionEvento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/direccion_eventos"
-                    android:textAppearance="@android:style/TextAppearance.Widget.TextView" />
-                <TextView
-                    android:id="@+id/descripcionEvento"
-                    style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color"
-                    android:text="@string/descripcion_eventos"
-                    android:textAppearance="@android:style/TextAppearance.Widget.TextView" />
+                android:layout_height="match_parent">
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginTop="3dp"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:id="@+id/fecha"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/direaccionEvento"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/hora_eventos"/>
-
+                        android:text="@string/direccion_eventos"
+                        android:textAppearance="@android:style/TextAppearance.Widget.TextView" />
                     <TextView
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/descripcionEvento"
+                        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/fecha_eventos" />
+                        android:textColor="@color/color"
+                        android:text="@string/descripcion_eventos"
+                        android:textAppearance="@android:style/TextAppearance.Widget.TextView" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/fecha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hora_eventos"/>
+
+                        <TextView
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fecha_eventos" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </ScrollView>
+
+
         </LinearLayout>
 
         <RelativeLayout

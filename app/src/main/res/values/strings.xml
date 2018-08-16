@@ -105,6 +105,9 @@
     <string name="educacion_empleo">Educación</string>
     <string name="habilidades_empleo">Habilidades</string>
     <string name="experiencia_empleo">Experiencia</string>
+    <string name="titulo_notificacion">Titulo</string>
+    <string name="descripcion_notificacion">Descripción</string>
+    <string name="mandar_notificacion">Mandar notificación</string>
 
 
     <!-- Contacto -->

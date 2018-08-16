@@ -3,6 +3,7 @@ package com.imjut.android.HomeActivities.Eventos;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -70,6 +72,7 @@ public class EventosActivity extends AppCompatActivity {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        ScrollView mScrollView;
         ProgressBar progressBar;
         ImageView iv_evento;
         TextView tv_descripcion;
@@ -81,6 +84,7 @@ public class EventosActivity extends AppCompatActivity {
 
         public ViewHolder(View itemView) {
             super(itemView);
+            mScrollView = itemView.findViewById(R.id.scrollview_description);
             direccionEvento = itemView.findViewById(R.id.direaccionEvento);
             tv_fecha = itemView.findViewById(R.id.fecha);
             layout_titulo = itemView.findViewById(R.id.layout_titulo);
@@ -100,6 +104,7 @@ public class EventosActivity extends AppCompatActivity {
                 EventosActivity.ViewHolder.class,
                 FirebaseDatabase.getInstance().getReference("posts").child("eventos")
         ) {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             protected void populateViewHolder(final EventosActivity.ViewHolder viewHolder, final Evento model, int position) {
                 FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -161,6 +166,15 @@ public class EventosActivity extends AppCompatActivity {
                     minutosS = "0"+minutos;
                 }
 
+                viewHolder.mScrollView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        Log.i("Prueba_Touch", "Touch ScrollView");
+                        // Disallow the touch request for parent scroll on touch of child view
+                        view.getParent().getParent().getParent().getParent().requestDisallowInterceptTouchEvent(false);
+                        return true;
+                    }
+                });
 
 
                 Log.i("Fecha", String.valueOf(año) + String.valueOf(mes) + String.valueOf(dia) +

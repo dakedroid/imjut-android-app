@@ -48,7 +48,7 @@ public class PanelSubirContenido extends AppCompatActivity {
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
-        private static final int LENGTH = 4;
+        private static final int LENGTH = 5;
         private String[] mTitulos;
         private Drawable[] mIconos;
         private Resources resources;
@@ -94,6 +94,8 @@ public class PanelSubirContenido extends AppCompatActivity {
                         case 3:
                             mContext.startActivity(new Intent(mActivity,SubirGaleriaActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                             break;
+                        case 4:
+                            mContext.startActivity(new Intent(mActivity, MandarNotificacion.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                         default:
                             break;
                     }

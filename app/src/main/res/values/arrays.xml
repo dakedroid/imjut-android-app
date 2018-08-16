@@ -4,7 +4,8 @@
         <item>Programas</item>
         <item>Eventos</item>
         <item>Bolsa de trabajo</item>
-        <item>Galeria</item>
+        <item>Galería</item>
+        <item>Mandar notificación</item>
     </string-array>
 
     <string-array name="programas">
@@ -16,6 +17,7 @@
         <item>@mipmap/ic_eventos</item>
         <item>@mipmap/ic_bolsa_trabajo</item>
         <item>@mipmap/ic_galeria</item>
+        <item>@mipmap/ic_notification</item>
     </array>
 
     <array name="category_pictures">
