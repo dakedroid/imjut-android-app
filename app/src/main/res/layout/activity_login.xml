@@ -12,6 +12,11 @@
         tools:context="com.imjut.android.com.divaga.imjut.LoginActivity"
         android:orientation="vertical"
         android:layout_margin="16dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@mipmap/imjut"
+            android:layout_height="130dp" />
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,19 +56,25 @@
             android:layout_margin="16dp">
             <Button
                 android:id="@+id/btn_ingresar"
-                style="@style/Widget.AppCompat.Light.ActionButton"
+                android:layout_centerInParent="true"
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ingresar"/>
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
             android:layout_margin="16dp"
             android:layout_gravity="end">
             <TextView
                 android:id="@+id/tv_registrarse"
+                android:layout_centerInParent="true"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/crear_cuenta" />

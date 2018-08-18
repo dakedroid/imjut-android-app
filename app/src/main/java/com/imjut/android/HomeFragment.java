@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.imjut.android.HomeActivities.BolsaTrabajo.BolsaTrabajoActivity;
 import com.imjut.android.HomeActivities.Eventos.EventosActivity;
@@ -134,6 +135,7 @@ public class HomeFragment extends Fragment{
                             mActivity.overridePendingTransition(R.anim.left_in, R.anim.left_out);
                         }
                     });
+                    Toast.makeText(mContext, "Proximamente", Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
                     holder.layout.setBackgroundColor(resources.getColor(R.color.color4));

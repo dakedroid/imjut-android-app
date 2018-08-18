@@ -48,7 +48,7 @@ public class PanelSubirContenido extends AppCompatActivity {
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
-        private static final int LENGTH = 5;
+        private static final int LENGTH = 4;
         private String[] mTitulos;
         private Drawable[] mIconos;
         private Resources resources;

@@ -17,21 +17,21 @@
         android:baselineAligned="false">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:id="@+id/layout_titulo"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:background="@drawable/layout_circle_objetivo">
 
                 <ImageView
                     android:id="@+id/imagenPrograma"
-                    android:layout_width="140dp"
+                    android:layout_width="match_parent"
                     android:src="@drawable/emporio"
-                    android:layout_height="130dp"
+                    android:layout_height="200dp"
                     android:scaleType="fitXY"/>
 
                 <ProgressBar
